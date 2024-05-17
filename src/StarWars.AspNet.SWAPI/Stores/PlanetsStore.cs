@@ -1,10 +1,12 @@
 using Microsoft.Extensions.Logging;
+using StarWars.AspNet.Core.Extensions;
 using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
 using StarWars.AspNet.SWAPI.Clients.Exceptions;
 using StarWars.AspNet.SWAPI.Clients.Interfaces;
+using StarWars.AspNet.SWAPI.Extensions;
 using StarWars.AspNet.SWAPI.Mappings.Planets;
 
 namespace StarWars.AspNet.SWAPI.Stores;
@@ -49,9 +51,12 @@ internal class PlanetsStore
 
         try
         {
-            var request = filter.ToRequest();
-            var response = await this._client.Planets.ListAsync(request, cancellation);
-            return response.ToModel();
+            var all = await this._client.Planets.GetAllAsync(cancellation);
+            var filtered = all.AsQueryable().Filter(filter);
+            var sorted = filtered.Sort(filter);
+            var paginated = sorted.Paginate(filter.Page, filter.PageSize);
+            var page = paginated.MapTo(p => p.ToModel());
+            return page;
         }
         catch (Exception ex)
         {
