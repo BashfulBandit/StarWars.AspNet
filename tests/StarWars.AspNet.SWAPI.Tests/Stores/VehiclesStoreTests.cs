@@ -16,7 +16,7 @@ public class VehiclesStoreTests
     }
 
     [Fact]
-    public async Task FetchAsync_WhenGivenAValidVehicleId_ItShouldReturnAFilm()
+    public async Task FetchAsync_WhenGivenAValidVehicleId_ItShouldReturnAVehicle()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var store = scope.ServiceProvider.GetRequiredService<IVehiclesStore>();
@@ -29,7 +29,7 @@ public class VehiclesStoreTests
     }
 
     [Fact]
-    public async Task FetchAsync_WhenGivenAnInvalidSpeciesId_ItShouldReturnAFilm()
+    public async Task FetchAsync_WhenGivenAnInvalidSpeciesId_ItShouldReturnNull()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var store = scope.ServiceProvider.GetRequiredService<IVehiclesStore>();

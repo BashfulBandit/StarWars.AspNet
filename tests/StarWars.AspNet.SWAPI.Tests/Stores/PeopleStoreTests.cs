@@ -16,7 +16,7 @@ public class PeopleStoreTests
     }
 
     [Fact]
-    public async Task FetchAsync_WhenGivenAValidPersonId_ItShouldReturnAFilm()
+    public async Task FetchAsync_WhenGivenAValidPersonId_ItShouldReturnAPerson()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var store = scope.ServiceProvider.GetRequiredService<IPeopleStore>();
@@ -29,7 +29,7 @@ public class PeopleStoreTests
     }
 
     [Fact]
-    public async Task FetchAsync_WhenGivenAnInvalidPersonId_ItShouldReturnAFilm()
+    public async Task FetchAsync_WhenGivenAnInvalidPersonId_ItShouldReturnNull()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var store = scope.ServiceProvider.GetRequiredService<IPeopleStore>();

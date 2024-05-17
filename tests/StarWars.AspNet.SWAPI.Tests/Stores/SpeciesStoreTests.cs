@@ -16,7 +16,7 @@ public class SpeciesStoreTests
     }
 
     [Fact]
-    public async Task FetchAsync_WhenGivenAValidSpeciesId_ItShouldReturnAFilm()
+    public async Task FetchAsync_WhenGivenAValidSpeciesId_ItShouldReturnASpecies()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var store = scope.ServiceProvider.GetRequiredService<ISpeciesStore>();
@@ -29,7 +29,7 @@ public class SpeciesStoreTests
     }
 
     [Fact]
-    public async Task FetchAsync_WhenGivenAnInvalidSpeciesId_ItShouldReturnAFilm()
+    public async Task FetchAsync_WhenGivenAnInvalidSpeciesId_ItShouldReturnNull()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var store = scope.ServiceProvider.GetRequiredService<ISpeciesStore>();

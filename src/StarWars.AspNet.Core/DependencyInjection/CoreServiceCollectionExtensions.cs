@@ -20,7 +20,7 @@ public static class CoreServiceCollectionExtensions
         builder.AddCQRSHandlers(typeof(IStarWarsBuilder).Assembly);
 
         // Add default no-op stores...
-        builder.AddFilmsStore<NoOpFilmsStore>();
+        builder.AddEpisodesStore<NoOpEpisodesStore>();
         builder.AddPeopleStore<NoOpPeopleStore>();
         builder.AddPlanetsStore<NoOpPlanetsStore>();
         builder.AddSpeciesStore<NoOpSpeciesStore>();
@@ -57,10 +57,10 @@ public static class CoreServiceCollectionExtensions
         return builder;
     }
 
-    public static IStarWarsBuilder AddFilmsStore<TStore>(this IStarWarsBuilder builder)
-        where TStore : class, IFilmsStore
+    public static IStarWarsBuilder AddEpisodesStore<TStore>(this IStarWarsBuilder builder)
+        where TStore : class, IEpisodesStore
     {
-        builder.Services.AddTransient<IFilmsStore, TStore>();
+        builder.Services.AddTransient<IEpisodesStore, TStore>();
 
         return builder;
     }

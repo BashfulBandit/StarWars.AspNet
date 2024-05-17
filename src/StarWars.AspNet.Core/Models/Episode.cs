@@ -2,9 +2,9 @@ using StarWars.AspNet.Core.Models.Primitives;
 
 namespace StarWars.AspNet.Core.Models;
 
-public class Film
+public class Episode
 {
-    public FilmId Id { get; set; } = FilmId.Default;
+    public EpisodeId Id { get; set; } = EpisodeId.Default;
 
     public string Title { get; set; } = default!;
 
