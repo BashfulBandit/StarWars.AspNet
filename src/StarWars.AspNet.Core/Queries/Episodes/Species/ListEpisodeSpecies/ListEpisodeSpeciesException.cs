@@ -22,7 +22,7 @@ public class ListEpisodeSpeciesException
         {
             FailureReason = ListEpisodeSpeciesFailureReason.Fault
         };
-    public static ListEpisodeSpeciesException EpisodeNotFound(EpisodeId episodeId)
+    public static ListEpisodeSpeciesException NotFound(EpisodeId episodeId)
         => new($"Episode not found for `{episodeId.Value}`.")
         {
             FailureReason = ListEpisodeSpeciesFailureReason.EpisodeNotFound

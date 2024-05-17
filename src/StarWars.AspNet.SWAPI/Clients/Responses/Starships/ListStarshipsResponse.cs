@@ -1,4 +1,4 @@
-using StarWars.AspNet.Core.Models;
+using StarWars.AspNet.SWAPI.Clients.Models;
 
 namespace StarWars.AspNet.SWAPI.Clients.Responses.Starships;
 

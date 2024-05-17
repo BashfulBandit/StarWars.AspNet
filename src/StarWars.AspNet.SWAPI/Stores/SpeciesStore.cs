@@ -41,7 +41,7 @@ internal class SpeciesStore
         catch (Exception ex)
         {
             this._logger.LogDebug(ex, "Failed to fetch Species {speciesId}.", id.Value);
-            throw new EpisodesStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
+            throw new SpeciesStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
         }
     }
 
@@ -66,7 +66,7 @@ internal class SpeciesStore
         catch (Exception ex)
         {
             this._logger.LogDebug(ex, "Failed to list Species.");
-            throw new PlanetsStoreException($"{nameof(this.ListAsync)} error.", ex);
+            throw new SpeciesStoreException($"{nameof(this.ListAsync)} error.", ex);
         }
     }
 }

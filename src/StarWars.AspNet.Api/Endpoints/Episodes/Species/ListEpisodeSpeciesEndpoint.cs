@@ -19,7 +19,7 @@ internal class ListEpisodeSpeciesEndpoint
     public override void Configure()
     {
         this.Get("/");
-        this.Group<SpeciesGroup>();
+        this.Group<EpisodeSpeciesGroup>();
     }
 
     public override async Task HandleAsync(ListEpisodeSpeciesRequest request, CancellationToken cancellation = default)

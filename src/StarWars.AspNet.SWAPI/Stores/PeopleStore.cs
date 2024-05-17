@@ -38,7 +38,7 @@ internal class PeopleStore
         catch (Exception ex)
         {
             this._logger.LogDebug(ex, "Failed to fetch Person {personId}.", id.Value);
-            throw new EpisodesStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
+            throw new PeopleStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
         }
     }
 }
