@@ -25,6 +25,7 @@ RUN dotnet publish "./StarWars.AspNet.Api.csproj" -c $BUILD_CONFIGURATION -o /ap
 FROM base AS final
 ARG RESOURCE_REAPER_SESSION_ID="00000000-0000-0000-0000-000000000000"
 LABEL "org.testcontainers.resource-reaper-session"=$RESOURCE_REAPER_SESSION_ID
+LABEL "org.opencontainers.image.source"="https://github.com/BashfulBandit/StarWars.AspNet.Api"
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "StarWars.AspNet.Api.dll"]
