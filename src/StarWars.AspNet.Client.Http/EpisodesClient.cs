@@ -3,7 +3,7 @@ using RestSharp;
 namespace StarWars.AspNet.Client.Http;
 
 internal class EpisodesClient
-    : IEpisodesClient
+    : IStarWarsClient.IEpisodesClient
 {
     private readonly RestClient _client;
 
@@ -14,5 +14,5 @@ internal class EpisodesClient
         this.Species = new EpisodeSpeciesClient(this._client);
     }
 
-    public IEpisodeSpeciesClient Species { get; }
+    public IStarWarsClient.IEpisodesClient.ISpeciesClient Species { get; }
 }

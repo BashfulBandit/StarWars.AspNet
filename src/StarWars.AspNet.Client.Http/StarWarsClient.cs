@@ -27,10 +27,14 @@ public class StarWarsClient
             configureSerialization: s => s.UseSystemTextJson(serializerOptions));
 
         this.Episodes = new EpisodesClient(this._client);
+        this.People = new PeopleClient(this._client);
     }
 
     /// <inheritdoc/>
-    public IEpisodesClient Episodes { get; }
+    public IStarWarsClient.IPeopleClient People { get; }
+
+    /// <inheritdoc/>
+    public IStarWarsClient.IEpisodesClient Episodes { get; }
 
     /// <inheritdoc/>
     public async Task<GetPopulationResponse> GetPopulationAsync(CancellationToken cancellation = default)

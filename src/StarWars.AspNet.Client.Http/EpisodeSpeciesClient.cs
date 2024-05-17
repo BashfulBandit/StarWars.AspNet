@@ -7,7 +7,7 @@ using StarWars.AspNet.Client.Responses.Episodes.Species;
 namespace StarWars.AspNet.Client.Http;
 
 internal class EpisodeSpeciesClient
-    : IEpisodeSpeciesClient
+    : IStarWarsClient.IEpisodesClient.ISpeciesClient
 {
     public const string EpisodeSpeciesEndpoint = "/api/episodes/{episodeId}/species";
 

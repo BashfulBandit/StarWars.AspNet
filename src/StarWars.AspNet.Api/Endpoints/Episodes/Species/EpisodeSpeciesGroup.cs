@@ -1,9 +1,9 @@
 namespace StarWars.AspNet.Api.Endpoints.Episodes.Species;
 
-internal class SpeciesGroup
+internal class EpisodeSpeciesGroup
     : FastEndpoints.SubGroup<EpisodesGroup>
 {
-    public SpeciesGroup()
+    public EpisodeSpeciesGroup()
     {
         this.Configure("{episodeId}/species", _ => { });
     }

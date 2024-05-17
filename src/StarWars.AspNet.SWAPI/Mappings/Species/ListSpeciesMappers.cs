@@ -32,6 +32,7 @@ internal static class ListSpeciesMappers
     public static IQueryable<Clients.Models.Species> Sort(this IQueryable<Clients.Models.Species> query,
         SpeciesSearchFilter _)
     {
+        // Currently doesn't do anything, but it is here to add later.
         return query;
     }
 }

@@ -35,13 +35,13 @@ internal class ListEpisodeSpeciesHandler
         }
         catch (Exception ex)
         {
-            return ListEpisodeSpeciesResult.Failure(ListEpisodeSpeciesException.Fault("Failed to list species for episode `{episodeId}`.", ex));
+            return ListEpisodeSpeciesResult.Failure(ListEpisodeSpeciesException.Fault($"Failed to list species for episode `{query.Filter.EpisodeId!.Value}`.", ex));
         }
     }
 
     private async Task ValidateAsync(ListEpisodeSpecies query, CancellationToken cancellation = default)
     {
         _ = await this._episodeStore.FetchAsync(query.Filter.EpisodeId!.Value, cancellation)
-            ?? throw ListEpisodeSpeciesException.EpisodeNotFound(query.Filter.EpisodeId.Value);
+            ?? throw ListEpisodeSpeciesException.NotFound(query.Filter.EpisodeId.Value);
     }
 }
