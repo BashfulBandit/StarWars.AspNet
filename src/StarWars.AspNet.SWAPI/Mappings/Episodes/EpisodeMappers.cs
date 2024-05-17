@@ -1,15 +1,14 @@
-using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.SWAPI.Extensions;
 
-namespace StarWars.AspNet.SWAPI.Mappings.Films;
+namespace StarWars.AspNet.SWAPI.Mappings.Episodes;
 
-internal static class FilmMappers
+internal static class EpisodeMappers
 {
-    public static Core.Models.Film ToModel(this Clients.Models.Film film)
+    public static Core.Models.Episode ToModel(this Clients.Models.Film film)
         => new()
         {
-            Id = FilmId.From(film.Url.ParseId()),
+            Id = EpisodeId.From(film.Url.ParseId()),
             Title = film.Title,
             ReleaseOrder = film.EpisodeId,
             OpeningCrawl = film.OpeningCrawl,

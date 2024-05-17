@@ -16,7 +16,7 @@ public class PlanetStoreTests
     }
 
     [Fact]
-    public async Task FetchAsync_WhenGivenAValidPlanetId_ItShouldReturnAFilm()
+    public async Task FetchAsync_WhenGivenAValidPlanetId_ItShouldReturnAPlanet()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var store = scope.ServiceProvider.GetRequiredService<IPlanetsStore>();
@@ -29,7 +29,7 @@ public class PlanetStoreTests
     }
 
     [Fact]
-    public async Task FetchAsync_WhenGivenAnInvalidPlanetId_ItShouldReturnAFilm()
+    public async Task FetchAsync_WhenGivenAnInvalidPlanetId_ItShouldReturnNull()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var store = scope.ServiceProvider.GetRequiredService<IPlanetsStore>();

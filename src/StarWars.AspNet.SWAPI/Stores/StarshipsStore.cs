@@ -38,7 +38,7 @@ internal class StarshipsStore
         catch (Exception ex)
         {
             this._logger.LogDebug(ex, "Failed to fetch Starship {starshipId}.", id.Value);
-            throw new FilmsStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
+            throw new EpisodesStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
         }
     }
 }

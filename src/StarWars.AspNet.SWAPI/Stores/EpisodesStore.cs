@@ -4,24 +4,24 @@ using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
 using StarWars.AspNet.SWAPI.Clients.Exceptions;
 using StarWars.AspNet.SWAPI.Clients.Interfaces;
-using StarWars.AspNet.SWAPI.Mappings.Films;
+using StarWars.AspNet.SWAPI.Mappings.Episodes;
 
 namespace StarWars.AspNet.SWAPI.Stores;
 
-internal class FilmsStore
-    : IFilmsStore
+internal class EpisodesStore
+    : IEpisodesStore
 {
-    private readonly ILogger<FilmsStore> _logger;
+    private readonly ILogger<EpisodesStore> _logger;
     private readonly ISWAPIClient _client;
 
-    public FilmsStore(ILogger<FilmsStore> logger,
+    public EpisodesStore(ILogger<EpisodesStore> logger,
         ISWAPIClient client)
     {
         this._logger = logger;
         this._client = client;
     }
 
-    public async Task<Film?> FetchAsync(FilmId id, CancellationToken cancellation = default)
+    public async Task<Episode?> FetchAsync(EpisodeId id, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();
 
@@ -37,8 +37,8 @@ internal class FilmsStore
         }
         catch (Exception ex)
         {
-            this._logger.LogDebug(ex, "Failed to fetch Film {filmId}.", id.Value);
-            throw new FilmsStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
+            this._logger.LogDebug(ex, "Failed to fetch Episode {episodeId}.", id.Value);
+            throw new EpisodesStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
         }
     }
 }

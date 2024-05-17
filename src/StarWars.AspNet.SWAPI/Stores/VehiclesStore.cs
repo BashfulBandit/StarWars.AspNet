@@ -38,7 +38,7 @@ internal class VehiclesStore
         catch (Exception ex)
         {
             this._logger.LogDebug(ex, "Failed to fetch Vehicle {vehicleId}.", id.Value);
-            throw new FilmsStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
+            throw new EpisodesStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
         }
     }
 }

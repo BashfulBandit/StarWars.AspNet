@@ -18,7 +18,7 @@ public static class SWAPIServiceCollectionExtensions
             o.BaseUrl = options.BaseUrl;
         });
 
-        builder.AddFilmsStore<FilmsStore>();
+        builder.AddEpisodesStore<EpisodesStore>();
         builder.AddPeopleStore<PeopleStore>();
         builder.AddPlanetsStore<PlanetsStore>();
         builder.AddSpeciesStore<SpeciesStore>();

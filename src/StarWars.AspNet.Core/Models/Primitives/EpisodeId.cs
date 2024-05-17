@@ -2,10 +2,10 @@ using StarWars.AspNet.Core.Extensions;
 
 namespace StarWars.AspNet.Core.Models.Primitives;
 
-public readonly struct FilmId
-    : IEquatable<FilmId>
+public readonly struct EpisodeId
+    : IEquatable<EpisodeId>
 {
-    private FilmId(string value)
+    private EpisodeId(string value)
     {
         this.Value = value;
         this.Validate();
@@ -13,11 +13,11 @@ public readonly struct FilmId
 
     public string Value { get; }
 
-    public static FilmId From(string value)
+    public static EpisodeId From(string value)
         => new(value);
-    public static FilmId NewId()
+    public static EpisodeId NewId()
         => new("flm-" + Guid.NewGuid());
-    public static readonly FilmId Default
+    public static readonly EpisodeId Default
         = new("flm-" + Guid.Empty);
 
     private void Validate()
@@ -29,20 +29,20 @@ public readonly struct FilmId
     }
 
     public override string ToString()
-        => $"{nameof(FilmId)} {{ {nameof(this.Value)} = {this.Value} }}";
+        => $"{nameof(EpisodeId)} {{ {nameof(this.Value)} = {this.Value} }}";
 
-    public bool Equals(FilmId other)
+    public bool Equals(EpisodeId other)
         => this.Value == other.Value;
 
     public override bool Equals(object? obj)
-        => obj is FilmId other
+        => obj is EpisodeId other
         && this.Equals(other);
 
     public override int GetHashCode()
         => this.Value.GetHashCode();
 
-    public static bool operator ==(FilmId left, FilmId right)
+    public static bool operator ==(EpisodeId left, EpisodeId right)
         => left.Equals(right);
-    public static bool operator !=(FilmId left, FilmId right)
+    public static bool operator !=(EpisodeId left, EpisodeId right)
         => !left.Equals(right);
 }
