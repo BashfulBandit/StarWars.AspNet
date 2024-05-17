@@ -22,9 +22,6 @@ public class Person
 
     public string Gender { get; set; } = default!;
 
-    // TODO: ?
-    public Planet Home { get; set; } = default!;
-
     public DateTime CreatedAt { get; set; } = default;
 
     public DateTime UpdatedAt { get; set; } = default;

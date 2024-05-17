@@ -14,12 +14,10 @@ internal static class SpeciesMappers
             Designation = species.Designation,
             AverageHeight = species.AverageHeight,
             AverageLifespace = species.AverageLifespace,
-            EyeColors = species.EyeColors.Split(','),
-            HairColors = species.HairColors.Split(','),
-            SkinColors = species.SkinColors.Split(','),
+            EyeColors = species.EyeColors.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
+            HairColors = species.HairColors.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
+            SkinColors = species.SkinColors.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             Language = species.Language,
-            // TODO: What to do here?
-            // Home = species.Homeworld,
             CreatedAt = species.Created,
             UpdatedAt = species.Edited,
         };

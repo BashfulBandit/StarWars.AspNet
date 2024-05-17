@@ -1,10 +1,8 @@
-using StarWars.AspNet.Core.Models.Primitives;
-
-namespace StarWars.AspNet.Core.Models;
+namespace StarWars.AspNet.Client.Models;
 
 public class Species
 {
-    public SpeciesId Id { get; set; } = SpeciesId.Default;
+    public string Id { get; set; } = default!;
 
     public string Name { get; set; } = default!;
 

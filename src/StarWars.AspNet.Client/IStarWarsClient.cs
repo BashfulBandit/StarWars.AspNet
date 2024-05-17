@@ -18,4 +18,6 @@ public interface IStarWarsClient
     Task HealthCheckAsync(CancellationToken cancellation = default);
 
     Task<GetPopulationResponse> GetPopulationAsync(CancellationToken cancellation = default);
+
+    IEpisodesClient Episodes { get; }
 }

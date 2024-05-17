@@ -18,8 +18,6 @@ internal static class PersonMappers
             EyeColor = person.EyeColor,
             BirthYear = person.BirthYear,
             Gender = person.Gender,
-            // TODO: What to do here?
-            // Home = person.Homeworld,
             CreatedAt = person.Created,
             UpdatedAt = person.Edited
         };

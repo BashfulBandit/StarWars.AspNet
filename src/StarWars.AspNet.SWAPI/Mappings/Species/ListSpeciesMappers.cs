@@ -24,7 +24,7 @@ internal static class ListSpeciesMappers
     {
         if (filter.EpisodeId is not null)
         {
-            query = query.Where(s => s.People.Select(p => EpisodeId.From(p.ParseId())).ToList().Contains(filter.EpisodeId.Value));
+            query = query.Where(s => s.Films.Select(f => EpisodeId.From(f.ParseId())).ToList().Contains(filter.EpisodeId.Value));
         }
         return query;
     }
