@@ -1,0 +1,107 @@
+name: StarWars.AspNet Publish Workflow
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  publish-starwars-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository...
+        uses: actions/checkout@v4
+      - name: Set up Docker Environment...
+        uses: docker/setup-buildx-action@v3
+      - name: Logging into Docker Registry...
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Docker image...
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          file: ./src/StarWars.AspNet.Api/Dockefile
+          tags: ghcr.io/informativeresearch/starwars.aspnet.api:latest;ghcr.io/informativeresearch/starwars.aspnet.api:0.1.0
+
+  publish-starwars-api-testcontainers:
+    runs-on: ubuntu-latest
+    env:
+      NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout Repository...
+        uses: actions/checkout@v4
+      - name: Set up .NET Environment...
+        uses: actions/setup-dotnet@v4
+        with:
+          source-url: https://nuget.pkg.github.com/BashfulBandit/index.json
+      - name: Restore Solution Dependencies...
+        run: dotnet restore ./StarWars.AspNet.sln
+      - name: Build Solution...
+        run: dotnet build --configuration Release --no-restore ./StarWars.AspNet.sln
+      - name: Pack NuGet Package...
+        run: dotnet pack --configuration Release ./src/StarWars.AspNet.Api.Testcontainers/*.csproj
+      - name: Publish NuGet Package...
+        run: dotnet nuget push ./src/StarWars.AspNet.Api.Testcontainers/bin/Release/*.nupkg --api-key $NUGET_AUTH_TOKEN --source https://nuget.pkg.github.com/BashfulBandit/index.json --skip-duplicate
+
+  publish-starwars-client:
+    runs-on: ubuntu-latest
+    env:
+      NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout Repository...
+        uses: actions/checkout@v4
+      - name: Set up .NET Environment...
+        uses: actions/setup-dotnet@v4
+        with:
+          source-url: https://nuget.pkg.github.com/BashfulBandit/index.json
+      - name: Restore Solution Dependencies...
+        run: dotnet restore ./StarWars.AspNet.sln
+      - name: Build Solution...
+        run: dotnet build --configuration Release --no-restore ./StarWars.AspNet.sln
+      - name: Pack NuGet Package...
+        run: dotnet pack --configuration Release ./src/StarWars.AspNet.Client/*.csproj
+      - name: Publish NuGet Package...
+        run: dotnet nuget push ./src/StarWars.AspNet.Client/bin/Release/*.nupkg --api-key $NUGET_AUTH_TOKEN --source https://nuget.pkg.github.com/BashfulBandit/index.json --skip-duplicate
+
+  publish-starwars-client-http:
+    runs-on: ubuntu-latest
+    env:
+      NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout Repository...
+        uses: actions/checkout@v4
+      - name: Set up .NET Environment...
+        uses: actions/setup-dotnet@v4
+        with:
+          source-url: https://nuget.pkg.github.com/BashfulBandit/index.json
+      - name: Restore Solution Dependencies...
+        run: dotnet restore ./StarWars.AspNet.sln
+      - name: Build Solution...
+        run: dotnet build --configuration Release --no-restore ./StarWars.AspNet.sln
+      - name: Pack NuGet Package...
+        run: dotnet pack --configuration Release ./src/StarWars.AspNet.Client.Http/*.csproj
+      - name: Publish NuGet Package...
+        run: dotnet nuget push ./src/StarWars.AspNet.Client.Http/bin/Release/*.nupkg --api-key $NUGET_AUTH_TOKEN --source https://nuget.pkg.github.com/BashfulBandit/index.json --skip-duplicate
+
+  publish-starwars-client-http-dependencyinjection-microsoft:
+    runs-on: ubuntu-latest
+    env:
+      NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout Repository...
+        uses: actions/checkout@v4
+      - name: Set up .NET Environment...
+        uses: actions/setup-dotnet@v4
+        with:
+          source-url: https://nuget.pkg.github.com/BashfulBandit/index.json
+      - name: Restore Solution Dependencies...
+        run: dotnet restore ./StarWars.AspNet.sln
+      - name: Build Solution...
+        run: dotnet build --configuration Release --no-restore ./StarWars.AspNet.sln
+      - name: Pack NuGet Package...
+        run: dotnet pack --configuration Release ./src/StarWars.AspNet.Client.Http.DependencyInjection.Microsoft/*.csproj
+      - name: Publish NuGet Package...
+        run: dotnet nuget push ./src/StarWars.AspNet.Client.Http.DependencyInjection.Microsoft/bin/Release/*.nupkg --api-key $NUGET_AUTH_TOKEN --source https://nuget.pkg.github.com/BashfulBandit/index.json --skip-duplicate
