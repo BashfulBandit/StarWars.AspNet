@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>StarWars.AspNet.Client</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Davis Templeton</Authors>
+    <Company>Davis Templeton</Company>
+    <Product>StarWars.AspNet.Client</Product>
+    <Copyright>All rights reserved Davis Templeton</Copyright>
+    <RepositoryUrl>https://github.com/BashfulBandit/StarWars.AspNet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <AssemblyName>StarWars.AspNet.Client</AssemblyName>
+    <RootNamespace>StarWars.AspNet.Client</RootNamespace>
+  </PropertyGroup>
+
+</Project>
