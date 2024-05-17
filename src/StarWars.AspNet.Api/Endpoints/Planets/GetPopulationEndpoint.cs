@@ -16,7 +16,7 @@ internal class GetPopulationEndpoint
 
     public override void Configure()
     {
-        this.Get("population");
+        this.Get("population/");
     }
 
     public override async Task HandleAsync(CancellationToken cancellation = default)

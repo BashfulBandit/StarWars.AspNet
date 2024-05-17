@@ -25,7 +25,12 @@ public class StarWarsClient
         this._client = new RestClient(new RestClientOptions(options.BaseUrl),
             useClientFactory: true,
             configureSerialization: s => s.UseSystemTextJson(serializerOptions));
+
+        this.Episodes = new EpisodesClient(this._client);
     }
+
+    /// <inheritdoc/>
+    public IEpisodesClient Episodes { get; }
 
     /// <inheritdoc/>
     public async Task<GetPopulationResponse> GetPopulationAsync(CancellationToken cancellation = default)

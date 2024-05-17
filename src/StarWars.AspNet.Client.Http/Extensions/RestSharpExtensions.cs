@@ -1,3 +1,4 @@
+using System.Net;
 using RestSharp;
 using StarWars.AspNet.Client.Exceptions;
 
@@ -17,6 +18,7 @@ internal static class RestSharpExtensions
 
         return response.StatusCode switch
         {
+            HttpStatusCode.NotFound => new StarWarsClientNotFoundException(message),
             _ => new StarWarsClientException(message)
         };
     }
