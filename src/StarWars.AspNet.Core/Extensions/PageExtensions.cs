@@ -1,11 +1,11 @@
-﻿using StarWars.AspNet.Core.Models;
+using StarWars.AspNet.Core.Models;
 
 namespace StarWars.AspNet.Core.Extensions;
 
 /// <summary>
 /// Extension methods for a <see cref="Page{T}"/>.
 /// </summary>
-internal static class PageExtensions
+public static class PageExtensions
 {
     /// <summary>
     /// Create a <see cref="Page{T}"/> from an <see cref="IQueryable{T}"/>.

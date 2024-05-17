@@ -1,9 +1,12 @@
 using Microsoft.Extensions.Logging;
+using StarWars.AspNet.Core.Extensions;
 using StarWars.AspNet.Core.Models;
+using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
 using StarWars.AspNet.SWAPI.Clients.Exceptions;
 using StarWars.AspNet.SWAPI.Clients.Interfaces;
+using StarWars.AspNet.SWAPI.Extensions;
 using StarWars.AspNet.SWAPI.Mappings.Species;
 
 namespace StarWars.AspNet.SWAPI.Stores;
@@ -39,6 +42,31 @@ internal class SpeciesStore
         {
             this._logger.LogDebug(ex, "Failed to fetch Species {speciesId}.", id.Value);
             throw new EpisodesStoreException($"{nameof(this.FetchAsync)} error for `{id.Value}`.", ex);
+        }
+    }
+
+    public async Task<IPage<Species>> ListAsync(SpeciesSearchFilter filter, CancellationToken cancellation = default)
+    {
+        cancellation.ThrowIfCancellationRequested();
+
+        try
+        {
+            // Because of the way I designed the resources for my API and the way
+            // the SW API is designed, I needed to iterate over all the pages
+            // for the SW API List Species endpoint. The `GetAllAsync` extension
+            // handles that.
+            var paginated = (await this._client.Species.GetAllAsync(cancellation))
+                .AsQueryable()
+                .Filter(filter)
+                .Sort(filter)
+                .Paginate(filter.Page, filter.PageSize)
+                .MapTo(s => s.ToModel());
+            return paginated;
+        }
+        catch (Exception ex)
+        {
+            this._logger.LogDebug(ex, "Failed to list Species.");
+            throw new PlanetsStoreException($"{nameof(this.ListAsync)} error.", ex);
         }
     }
 }

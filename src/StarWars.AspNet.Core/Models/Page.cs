@@ -8,7 +8,6 @@ public class Page
     : IPage
 {
     public const int MinPage = IPage.MinPage;
-    public const int MaxPageSize = 50;
     public const int DefaultPageNumber = IPage.DefaultPageNumber;
     public const int DefaultPageSize = IPage.DefaultPageSize;
     public const int DefaultPageCount = IPage.DefaultPageCount;
@@ -19,7 +18,7 @@ public class Page
         int pageSize = DefaultPageSize)
     {
         this.PageNumber = Math.Max(MinPage, pageNumber);
-        this.PageSize = Math.Min(MaxPageSize, Math.Max(1, pageSize));
+        this.PageSize = Math.Min(int.MaxValue, Math.Max(1, pageSize));
         this.TotalCount = Math.Max(0, totalCount);
         this.PageCount = (int)Math.Ceiling(this.TotalCount / (double)this.PageSize);
     }
@@ -82,8 +81,7 @@ public class Page<T>
         => this.Items = items;
 
     public Page()
-    {
-    }
+    { }
 
     /// <inheritdoc />
     public IList<T> Items { get; init; } = DefaultItems;
