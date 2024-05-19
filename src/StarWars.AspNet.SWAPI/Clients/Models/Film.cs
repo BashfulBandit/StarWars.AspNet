@@ -1,11 +1,11 @@
 using System.Text.Json.Serialization;
 
-namespace StarWars.AspNet.SWAPI.Clients.Models;
+namespace SWApiClient.Models;
 
 /// <summary>
 /// A Film resource is a single film.
 /// </summary>
-internal class Film
+public class Film
 {
     /// <summary>
     /// The title of this film.

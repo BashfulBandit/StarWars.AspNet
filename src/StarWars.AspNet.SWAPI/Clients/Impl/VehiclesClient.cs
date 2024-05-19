@@ -1,12 +1,11 @@
 using RestSharp;
-using StarWars.AspNet.Core.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
-using StarWars.AspNet.SWAPI.Clients.Options;
-using StarWars.AspNet.SWAPI.Clients.Requests.Vehicles;
-using StarWars.AspNet.SWAPI.Clients.Responses.Vehicles;
+using SWApiClient.Extensions;
+using SWApiClient.Interfaces;
+using SWApiClient.Options;
+using SWApiClient.Requests.Vehicles;
+using SWApiClient.Responses.Vehicles;
 
-namespace StarWars.AspNet.SWAPI.Clients.Impl;
+namespace SWApiClient.Impl;
 
 /// <inheritdoc />
 internal class VehiclesClient
@@ -15,6 +14,9 @@ internal class VehiclesClient
     private readonly VehiclesClientOptions _options;
     private readonly RestClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="VehiclesClient"/>.
+    /// </summary>
     public VehiclesClient(VehiclesClientOptions options,
         RestClient client)
     {
@@ -28,14 +30,10 @@ internal class VehiclesClient
         cancellation.ThrowIfCancellationRequested();
         request ??= new();
         var restRequest = new RestRequest(this._options.ListEndpoint, Method.Get)
-            .AddQueryParameter("page", request.Page);
-        if (request.Search.IsPresent())
-        {
-            restRequest = restRequest.AddQueryParameter("search", request.Search);
-        }
+            .AddQueryParameters(request);
         var restResponse = await this._client.ExecuteAsync<ListVehiclesResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 
     /// <inheritdoc />
@@ -46,6 +44,6 @@ internal class VehiclesClient
             .AddUrlSegment("vehicleId", request.VehicleId);
         var restResponse = await this._client.ExecuteAsync<RetrieveVehicleResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 }

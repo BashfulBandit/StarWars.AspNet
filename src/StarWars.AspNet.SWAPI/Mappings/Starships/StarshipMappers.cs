@@ -6,14 +6,14 @@ namespace StarWars.AspNet.SWAPI.Mappings.Starships;
 
 internal static class StarshipMappers
 {
-    public static Starship ToModel(this Clients.Models.Starship starship)
+    public static Starship ToModel(this SWApiClient.Models.Starship starship)
         => new()
         {
             Id = StarshipId.From(starship.Url.ParseId()),
             Name = starship.Name,
             Model = starship.Model,
             StarshipClass = starship.StarshipClass,
-            Manufacturer = starship.Manufacturer,
+            Manufacturers = starship.Manufacturer.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             CostInCredits = starship.CostInCredits,
             Length = starship.Length,
             Crew = starship.Crew,

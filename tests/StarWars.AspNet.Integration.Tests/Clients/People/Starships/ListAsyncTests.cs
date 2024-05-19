@@ -23,7 +23,7 @@ public class ListAsyncTests
 
         await Assert.ThrowsAsync<StarWarsClientNotFoundException>(async () => await client.People.Starships.ListAsync(new()
         {
-            PersonId = "NotAValidPersonId"
+            CharacterId = "NotAValidCharacterId"
         }));
     }
 
@@ -35,7 +35,7 @@ public class ListAsyncTests
 
         var response = await client.People.Starships.ListAsync(new()
         {
-            PersonId = "1"
+            CharacterId = "1"
         });
 
         Assert.NotNull(response);

@@ -1,6 +1,6 @@
-using StarWars.AspNet.SWAPI.Clients.Impl;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
-using StarWars.AspNet.SWAPI.Clients.Options;
+using SWApiClient.Impl;
+using SWApiClient.Interfaces;
+using SWApiClient.Options;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

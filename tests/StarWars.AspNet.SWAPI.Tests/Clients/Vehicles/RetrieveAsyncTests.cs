@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using StarWars.AspNet.SWAPI.Tests.Bootstrap.Fixtures;
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
+using SWApiClient.Exceptions;
+using SWApiClient.Interfaces;
 
 namespace StarWars.AspNet.SWAPI.Tests.Clients.Vehicles;
 

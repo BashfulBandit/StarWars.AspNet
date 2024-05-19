@@ -1,9 +1,9 @@
-namespace StarWars.AspNet.SWAPI.Clients.Requests.Species;
+namespace SWApiClient.Requests.Species;
 
 /// <summary>
 /// Model encapsulating data to make a request to retrieve a <see cref="Models.Species"/>.
 /// </summary>
-internal class RetrieveSpeciesRequest
+public class RetrieveSpeciesRequest
 {
     /// <summary>
     /// The StarWars API identifier for the species.

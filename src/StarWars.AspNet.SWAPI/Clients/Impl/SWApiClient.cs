@@ -1,18 +1,21 @@
 using RestSharp;
-using StarWars.AspNet.SWAPI.Clients.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
-using StarWars.AspNet.SWAPI.Clients.Options;
-using StarWars.AspNet.SWAPI.Clients.Responses;
+using SWApiClient.Extensions;
+using SWApiClient.Interfaces;
+using SWApiClient.Options;
+using SWApiClient.Responses;
 
-namespace StarWars.AspNet.SWAPI.Clients.Impl;
+namespace SWApiClient.Impl;
 
 /// <inheritdoc />
-internal class SWAPIClient
+public class SWAPIClient
     : ISWAPIClient
 {
     private readonly SWAPIClientOptions _options;
     private readonly RestClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SWAPIClient"/>.
+    /// </summary>
     public SWAPIClient(SWAPIClientOptions options)
     {
         this._options = options;
@@ -81,6 +84,6 @@ internal class SWAPIClient
         var restRequest = new RestRequest("api", Method.Get);
         var restResponse = await this._client.ExecuteAsync<DiscoveryResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 }

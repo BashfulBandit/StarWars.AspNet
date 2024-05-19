@@ -1,6 +1,8 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 ARG RESOURCE_REAPER_SESSION_ID="00000000-0000-0000-0000-000000000000"
 LABEL "org.testcontainers.resource-reaper-session"=$RESOURCE_REAPER_SESSION_ID
+RUN apt-get update \
+	&& apt-get install --yes curl
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -28,4 +30,5 @@ LABEL "org.testcontainers.resource-reaper-session"=$RESOURCE_REAPER_SESSION_ID
 LABEL "org.opencontainers.image.source"="https://github.com/BashfulBandit/StarWars.AspNet.Api"
 WORKDIR /app
 COPY --from=publish /app/publish .
+HEALTHCHECK CMD curl --fail http://localhost/api/healthz || exit 1
 ENTRYPOINT ["dotnet", "StarWars.AspNet.Api.dll"]

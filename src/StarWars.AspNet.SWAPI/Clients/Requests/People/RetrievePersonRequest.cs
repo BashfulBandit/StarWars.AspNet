@@ -1,11 +1,11 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Requests.People;
+namespace SWApiClient.Requests.People;
 
 /// <summary>
 /// Model encapsulating data to make a request to retrieve a <see cref="Person"/>.
 /// </summary>
-internal class RetrievePersonRequest
+public class RetrievePersonRequest
 {
     /// <summary>
     /// The StarWars API identifier for the person.

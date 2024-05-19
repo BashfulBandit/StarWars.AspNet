@@ -6,14 +6,14 @@ namespace StarWars.AspNet.SWAPI.Mappings.Vehicles;
 
 internal static class VehicleMappers
 {
-    public static Vehicle ToModel(this Clients.Models.Vehicle vehicle)
+    public static Vehicle ToModel(this SWApiClient.Models.Vehicle vehicle)
         => new()
         {
             Id = VehicleId.From(vehicle.Url.ParseId()),
             Name = vehicle.Name,
             Model = vehicle.Model,
             VehicleClass = vehicle.VehicleClass,
-            Manufacturer = vehicle.Manufacturer,
+            Manufacturer = vehicle.Manufacturer.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             Length = vehicle.Length,
             CostInCredits = vehicle.CostInCredits,
             Crew = vehicle.Crew,

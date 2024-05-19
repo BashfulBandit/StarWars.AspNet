@@ -1,11 +1,11 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Requests.Films;
+namespace SWApiClient.Requests.Films;
 
 /// <summary>
 /// Models encapsulating data to make a request to retrieve a <see cref="Film"/>.
 /// </summary>
-internal class RetrieveFilmRequest
+public class RetrieveFilmRequest
 {
     /// <summary>
     /// The StarWars API identifier for the film.

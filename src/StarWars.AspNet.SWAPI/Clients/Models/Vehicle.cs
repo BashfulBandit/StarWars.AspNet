@@ -1,12 +1,12 @@
 using System.Text.Json.Serialization;
 
-namespace StarWars.AspNet.SWAPI.Clients.Models;
+namespace SWApiClient.Models;
 
 /// <summary>
 /// A Vehicle resource is a single transport craft that does not have hyperdrive
 /// capability.
 /// </summary>
-internal class Vehicle
+public class Vehicle
 {
     /// <summary>
     /// The name of this vehicle. The common name, such as "Sand Crawler" or

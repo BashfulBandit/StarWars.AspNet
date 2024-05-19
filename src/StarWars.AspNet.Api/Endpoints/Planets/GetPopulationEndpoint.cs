@@ -1,15 +1,17 @@
+using System.Net;
+using StarWars.AspNet.Api.Mappings.Planets;
 using StarWars.AspNet.Api.Responses.Planets;
-using StarWars.AspNet.Core.Queries;
-using StarWars.AspNet.Core.Queries.Planets;
+using StarWars.AspNet.Core.Commands;
+using StarWars.AspNet.Core.Commands.Planets;
 
 namespace StarWars.AspNet.Api.Endpoints.Planets;
 
 internal class GetPopulationEndpoint
     : FastEndpoints.EndpointWithoutRequest<GetPopulationResponse>
 {
-    private readonly IQueryHandler<CalculatePopulation, CalculatePopulationResult> _handler;
+    private readonly ICommandHandler<CalculatePopulation, CalculatePopulationResult> _handler;
 
-    public GetPopulationEndpoint(IQueryHandler<CalculatePopulation, CalculatePopulationResult> handler)
+    public GetPopulationEndpoint(ICommandHandler<CalculatePopulation, CalculatePopulationResult> handler)
     {
         this._handler = handler;
     }
@@ -23,9 +25,24 @@ internal class GetPopulationEndpoint
     {
         cancellation.ThrowIfCancellationRequested();
 
-        var result = await this._handler.HandleAsync(CalculatePopulation.ToQuery(), cancellation);
+        var result = await this._handler.HandleAsync(CalculatePopulation.ToCommand(), cancellation);
         if (!result.Succeeded) throw result.Error;
         var response = result.ToResponse();
         await this.SendOkAsync(response, cancellation);
+    }
+}
+
+internal class GetPopulationSummary
+    : FastEndpoints.Summary<GetPopulationEndpoint>
+{
+    public GetPopulationSummary()
+    {
+        this.Summary = "Get the total known population of the Star Wars universe.";
+        this.Description = "Get the total known population of the Star Wars universe.";
+        this.Response((int) HttpStatusCode.OK, "Successfully retrieved the total known population of the Star Wars universe.", "application/json",
+            new GetPopulationResponse()
+            {
+                Population = 1_711_401_432_500
+            });
     }
 }

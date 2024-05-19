@@ -1,12 +1,11 @@
 using RestSharp;
-using StarWars.AspNet.Core.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
-using StarWars.AspNet.SWAPI.Clients.Options;
-using StarWars.AspNet.SWAPI.Clients.Requests.People;
-using StarWars.AspNet.SWAPI.Clients.Responses.People;
+using SWApiClient.Extensions;
+using SWApiClient.Interfaces;
+using SWApiClient.Options;
+using SWApiClient.Requests.People;
+using SWApiClient.Responses.People;
 
-namespace StarWars.AspNet.SWAPI.Clients.Impl;
+namespace SWApiClient.Impl;
 
 /// <inheritdoc />
 internal class PeopleClient
@@ -15,6 +14,9 @@ internal class PeopleClient
     private readonly PeopleClientOptions _options;
     private readonly RestClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PeopleClient"/>.
+    /// </summary>
     public PeopleClient(PeopleClientOptions options,
         RestClient client)
     {
@@ -31,14 +33,10 @@ internal class PeopleClient
         request ??= new();
 
         var restRequest = new RestRequest(this._options.ListEndpoint, Method.Get)
-            .AddQueryParameter("page", request.Page);
-        if (request.Search.IsPresent())
-        {
-            restRequest = restRequest.AddQueryParameter("search", request.Search);
-        }
+            .AddQueryParameters(request);
         var restResponse = await this._client.ExecuteAsync<ListPeopleResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 
     /// <inheritdoc />
@@ -49,6 +47,6 @@ internal class PeopleClient
             .AddUrlSegment("personId", request.PersonId);
         var restResponse = await this._client.ExecuteAsync<RetrievePersonResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 }

@@ -1,10 +1,10 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Responses.Films;
+namespace SWApiClient.Responses.Films;
 
 /// <summary>
 /// Get a specific film resource.
 /// </summary>
-internal class RetrieveFilmResponse
+public class RetrieveFilmResponse
     : Film
 { }

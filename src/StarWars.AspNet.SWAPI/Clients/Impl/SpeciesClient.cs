@@ -1,12 +1,11 @@
 using RestSharp;
-using StarWars.AspNet.Core.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
-using StarWars.AspNet.SWAPI.Clients.Options;
-using StarWars.AspNet.SWAPI.Clients.Requests.Species;
-using StarWars.AspNet.SWAPI.Clients.Responses.Species;
+using SWApiClient.Extensions;
+using SWApiClient.Interfaces;
+using SWApiClient.Options;
+using SWApiClient.Requests.Species;
+using SWApiClient.Responses.Species;
 
-namespace StarWars.AspNet.SWAPI.Clients.Impl;
+namespace SWApiClient.Impl;
 
 /// <inheritdoc />
 internal class SpeciesClient
@@ -15,6 +14,9 @@ internal class SpeciesClient
     private readonly SpeciesClientOptions _options;
     private readonly RestClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SpeciesClient"/>.
+    /// </summary>
     public SpeciesClient(SpeciesClientOptions options,
         RestClient client)
     {
@@ -28,14 +30,10 @@ internal class SpeciesClient
         cancellation.ThrowIfCancellationRequested();
         request ??= new();
         var restRequest = new RestRequest(this._options.ListEndpoint, Method.Get)
-            .AddQueryParameter("page", request.Page);
-        if (request.Search.IsPresent())
-        {
-            restRequest = restRequest.AddQueryParameter("search", request.Search);
-        }
+            .AddQueryParameters(request);
         var restResponse = await this._client.ExecuteAsync<ListSpeciesResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 
     /// <inheritdoc />
@@ -46,6 +44,6 @@ internal class SpeciesClient
             .AddUrlSegment("speciesId", request.SpeciesId);
         var restResponse = await this._client.ExecuteAsync<RetrieveSpeciesResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 }

@@ -6,7 +6,7 @@ namespace StarWars.AspNet.SWAPI.Mappings.Planets;
 
 internal static class PlanetMappers
 {
-    public static Planet ToModel(this Clients.Models.Planet planet)
+    public static Planet ToModel(this SWApiClient.Models.Planet planet)
         => new()
         {
             Id = PlanetId.From(planet.Url.ParseId()),
@@ -14,9 +14,9 @@ internal static class PlanetMappers
             RotationPeriod = planet.RotationPeriod,
             OrbitalPeriod = planet.OrbitalPeriod,
             Diameter = planet.Diameter,
-            Climate = planet.Climate,
+            Climates = planet.Climate.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             Gravity = planet.Gravity,
-            Terrain = planet.Terrain,
+            Terrains = planet.Terrain.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             SurfaceWater = planet.SurfaceWater,
             Population = planet.Population.ParsePopulation(),
             CreatedAt = planet.Created,

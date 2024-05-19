@@ -1,5 +1,6 @@
 using StarWars.AspNet.Core.Models.Filters;
-using StarWars.AspNet.SWAPI.Clients.Requests.Planets;
+using SWApiClient.Models;
+using SWApiClient.Requests.Planets;
 
 namespace StarWars.AspNet.SWAPI.Mappings.Planets;
 
@@ -11,13 +12,13 @@ internal static class ListPlanetsMappers
             Page = filter.Page
         };
 
-    public static IQueryable<Clients.Models.Planet> Filter(this IQueryable<Clients.Models.Planet> query,
+    public static IQueryable<Planet> Filter(this IQueryable<Planet> query,
         PlanetsSearchFilter _)
     {
         return query;
     }
 
-    public static IQueryable<Clients.Models.Planet> Sort(this IQueryable<Clients.Models.Planet> query,
+    public static IQueryable<Planet> Sort(this IQueryable<Planet> query,
         PlanetsSearchFilter _)
     {
         return query;

@@ -1,12 +1,20 @@
 using System.Net;
 using RestSharp;
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
+using SWApiClient.Exceptions;
 
-namespace StarWars.AspNet.SWAPI.Clients.Extensions;
+namespace SWApiClient.Extensions;
 
+/// <summary>
+/// Extension methods for a <see cref="RestResponse"/>.
+/// </summary>
 internal static class RestResponseExtensions
 {
-    public static SWAPIClientException BuildExceptionFromResponse(this RestResponse response)
+    /// <summary>
+    /// Build a <see cref="SWAPIClientException"/> from the instance of <see cref="RestResponse"/>.
+    /// </summary>
+    /// <param name="response">The instance of <see cref="RestResponse"/>.</param>
+    /// <returns>The built <see cref="SWAPIClientException"/>.</returns>
+    public static SWAPIClientException BuildException(this RestResponse response)
     {
         var message = response.Content ?? "Error communicating with the Star Wars API.";
 

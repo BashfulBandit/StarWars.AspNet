@@ -1,14 +1,14 @@
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Models;
-using StarWars.AspNet.SWAPI.Clients.Requests.Starships;
-using StarWars.AspNet.SWAPI.Clients.Responses.Starships;
+using SWApiClient.Exceptions;
+using SWApiClient.Models;
+using SWApiClient.Requests.Starships;
+using SWApiClient.Responses.Starships;
 
-namespace StarWars.AspNet.SWAPI.Clients.Interfaces;
+namespace SWApiClient.Interfaces;
 
 /// <summary>
 /// Interface for interacting with the <see cref="Starship"/> resources.
 /// </summary>
-internal interface IStarshipsClient
+public interface IStarshipsClient
 {
     /// <summary>
     /// Retrieve a pagination list of <see cref="Starship"/> resources.

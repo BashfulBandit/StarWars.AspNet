@@ -6,6 +6,7 @@ using StarWars.AspNet.Client.Responses.Episodes.Species;
 
 namespace StarWars.AspNet.Client.Http;
 
+/// <inheritdoc/>
 internal class EpisodeSpeciesClient
     : IStarWarsClient.IEpisodesClient.ISpeciesClient
 {
@@ -18,6 +19,7 @@ internal class EpisodeSpeciesClient
         this._client = client;
     }
 
+    /// <inheritdoc/>
     public async Task<ListEpisodeSpeciesResponse> ListAsync(ListEpisodeSpeciesRequest request, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();

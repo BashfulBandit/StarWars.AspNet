@@ -2,6 +2,9 @@ using StarWars.AspNet.Core.Extensions;
 
 namespace StarWars.AspNet.Core.Models.Primitives;
 
+/// <summary>
+/// Represents a type-safe identifier for a <see cref="Starship"/>.
+/// </summary>
 public readonly struct StarshipId
     : IEquatable<StarshipId>
 {
@@ -11,10 +14,23 @@ public readonly struct StarshipId
         this.Validate();
     }
 
+    /// <summary>
+    /// The actual internal value of the <see cref="StarshipId"/>.
+    /// </summary>
     public string Value { get; }
 
+    /// <summary>
+    /// Create a <see cref="StarshipId"/> from the specified <see cref="string"/>.
+    /// </summary>
+    /// <param name="value">The specified value.</param>
+    /// <returns>The created <see cref="StarshipId"/>.</returns>
     public static StarshipId From(string value)
         => new(value);
+
+    /// <summary>
+    /// Generate a new <see cref="StarshipId"/>.
+    /// </summary>
+    /// <returns>The generated <see cref="StarshipId"/>.</returns>
     public static StarshipId NewId()
         => new("ssh-" + Guid.NewGuid());
     public static readonly StarshipId Default

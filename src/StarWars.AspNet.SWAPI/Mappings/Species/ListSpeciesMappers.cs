@@ -1,8 +1,8 @@
 using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
-using StarWars.AspNet.SWAPI.Clients.Requests.Species;
-using StarWars.AspNet.SWAPI.Clients.Responses.Species;
+using SWApiClient.Requests.Species;
+using SWApiClient.Responses.Species;
 using StarWars.AspNet.SWAPI.Extensions;
 
 namespace StarWars.AspNet.SWAPI.Mappings.Species;
@@ -16,10 +16,10 @@ internal static class ListSpeciesMappers
         };
 
     public static IPage<Core.Models.Species> ToModel(this ListSpeciesResponse response)
-        => new Page<Clients.Models.Species>(response.Results.ToList(), response.PageNumber(), response.Results.Count(), response.Count)
+        => new Page<SWApiClient.Models.Species>(response.Results.ToList(), response.ParseCurrentPageNumber(), response.Results.Count(), response.Count)
             .MapTo(p => p.ToModel());
 
-    public static IQueryable<Clients.Models.Species> Filter(this IQueryable<Clients.Models.Species> query,
+    public static IQueryable<SWApiClient.Models.Species> Filter(this IQueryable<SWApiClient.Models.Species> query,
         SpeciesSearchFilter filter)
     {
         if (filter.EpisodeId is not null)
@@ -29,7 +29,7 @@ internal static class ListSpeciesMappers
         return query;
     }
 
-    public static IQueryable<Clients.Models.Species> Sort(this IQueryable<Clients.Models.Species> query,
+    public static IQueryable<SWApiClient.Models.Species> Sort(this IQueryable<SWApiClient.Models.Species> query,
         SpeciesSearchFilter _)
     {
         // Currently doesn't do anything, but it is here to add later.

@@ -1,12 +1,12 @@
 using System.Text.Json.Serialization;
 
-namespace StarWars.AspNet.SWAPI.Clients.Models;
+namespace SWApiClient.Models;
 
 /// <summary>
 /// A Species resource is a type of person or character within the Star Wars
 /// Universe.
 /// </summary>
-internal class Species
+public class Species
 {
     /// <summary>
     /// The name of this species.
@@ -33,7 +33,7 @@ internal class Species
     /// The average lifespan of this species in years.
     /// </summary>
     [JsonPropertyName("average_lifespan")]
-    public string AverageLifespace { get; set; } = default!;
+    public string AverageLifespan { get; set; } = default!;
 
     /// <summary>
     /// A comma-separated string of common eye colors for this species, "none"

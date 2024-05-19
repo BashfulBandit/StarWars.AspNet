@@ -4,19 +4,23 @@ using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
+using SWApiClient.Exceptions;
+using SWApiClient.Interfaces;
 using StarWars.AspNet.SWAPI.Extensions;
 using StarWars.AspNet.SWAPI.Mappings.Species;
 
 namespace StarWars.AspNet.SWAPI.Stores;
 
+/// <inheritdoc />
 internal class SpeciesStore
     : ISpeciesStore
 {
     private readonly ILogger<SpeciesStore> _logger;
     private readonly ISWAPIClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SpeciesStore"/>.
+    /// </summary>
     public SpeciesStore(ILogger<SpeciesStore> logger,
         ISWAPIClient client)
     {
@@ -24,6 +28,7 @@ internal class SpeciesStore
         this._client = client;
     }
 
+    /// <inheritdoc />
     public async Task<Species?> FetchAsync(SpeciesId id, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();
@@ -45,6 +50,7 @@ internal class SpeciesStore
         }
     }
 
+    /// <inheritdoc />
     public async Task<IPage<Species>> ListAsync(SpeciesSearchFilter filter, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();

@@ -1,0 +1,145 @@
+{
+  "info": {
+    "_postman_id": "c5c991f9-1b9f-4d4a-bc6a-91ca3e9f6390",
+    "name": "Star Wars API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "7460804"
+  },
+  "item": [
+    {
+      "name": "Episodes",
+      "item": [
+        {
+          "name": "Species",
+          "item": [
+            {
+              "name": "List Episode Species",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/episodes/{{episode_id}}/species",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "episodes",
+                    "{{episode_id}}",
+                    "species"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Characters",
+      "item": [
+        {
+          "name": "Starships",
+          "item": [
+            {
+              "name": "List Character Starships",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/characters/{{character_id}}/starships",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "characters",
+                    "{{character_id}}",
+                    "starships"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/healthz",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "healthz"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Population",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/population",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "population"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "episode_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "character_id",
+      "value": "1",
+      "type": "string"
+    }
+  ]
+}

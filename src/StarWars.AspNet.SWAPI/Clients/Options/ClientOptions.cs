@@ -1,4 +1,4 @@
-namespace StarWars.AspNet.SWAPI.Clients.Options;
+namespace SWApiClient.Options;
 
 /// <summary>
 /// Base abstract class to define a client options.

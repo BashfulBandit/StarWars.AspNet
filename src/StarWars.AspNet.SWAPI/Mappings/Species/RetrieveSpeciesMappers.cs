@@ -1,6 +1,6 @@
 using StarWars.AspNet.Core.Models.Primitives;
-using StarWars.AspNet.SWAPI.Clients.Requests.Species;
-using StarWars.AspNet.SWAPI.Clients.Responses.Species;
+using SWApiClient.Requests.Species;
+using SWApiClient.Responses.Species;
 
 namespace StarWars.AspNet.SWAPI.Mappings.Species;
 
@@ -13,5 +13,5 @@ internal static class RetrieveSpeciesMappers
         };
 
     public static Core.Models.Species ToModel(this RetrieveSpeciesResponse response)
-        => (response as Clients.Models.Species).ToModel();
+        => (response as SWApiClient.Models.Species).ToModel();
 }

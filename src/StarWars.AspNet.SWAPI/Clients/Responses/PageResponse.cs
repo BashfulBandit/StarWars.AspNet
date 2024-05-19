@@ -1,10 +1,10 @@
-namespace StarWars.AspNet.SWAPI.Clients.Responses;
+namespace SWApiClient.Responses;
 
 /// <summary>
 /// Abstract base response for a list endpoint.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-internal abstract class PageResponse<T>
+public abstract class PageResponse<T>
 {
     /// <summary>
     /// Count of total resources in the API.
