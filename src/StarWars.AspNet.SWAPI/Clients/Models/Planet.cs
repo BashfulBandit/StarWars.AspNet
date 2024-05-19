@@ -1,12 +1,12 @@
 using System.Text.Json.Serialization;
 
-namespace StarWars.AspNet.SWAPI.Clients.Models;
+namespace SWApiClient.Models;
 
 /// <summary>
 /// A Planet resource is a large mass, planet or planetoid in the Star Wars
 /// Universe, at the time of 0 ABY.
 /// </summary>
-internal class Planet
+public class Planet
 {
     /// <summary>
     /// The name of this planet.

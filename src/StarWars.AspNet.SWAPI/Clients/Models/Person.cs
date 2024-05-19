@@ -1,12 +1,12 @@
 using System.Text.Json.Serialization;
 
-namespace StarWars.AspNet.SWAPI.Clients.Models;
+namespace SWApiClient.Models;
 
 /// <summary>
 /// A People resource is an individual person or character within the Star Wars
 /// universe.
 /// </summary>
-internal class Person
+public class Person
 {
     /// <summary>
     /// The name of this person.

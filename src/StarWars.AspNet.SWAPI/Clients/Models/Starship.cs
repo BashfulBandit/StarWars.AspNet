@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace StarWars.AspNet.SWAPI.Clients.Models;
+namespace SWApiClient.Models;
 
 /// <summary>
 /// A Starship resource is a single transport craft that has hyperdrive

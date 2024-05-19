@@ -1,10 +1,10 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Requests.Vehicles;
+namespace SWApiClient.Requests.Vehicles;
 
 /// <summary>
 /// Model encapsulating data to make a request to retrieve a list of <see cref="Starship"/>.
 /// </summary>
-internal class ListVehiclesRequest
+public class ListVehiclesRequest
     : PageRequest
 { }

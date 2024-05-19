@@ -1,11 +1,13 @@
+using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.SWAPI.Extensions;
+using SWApiClient.Models;
 
 namespace StarWars.AspNet.SWAPI.Mappings.Episodes;
 
 internal static class EpisodeMappers
 {
-    public static Core.Models.Episode ToModel(this Clients.Models.Film film)
+    public static Episode ToModel(this Film film)
         => new()
         {
             Id = EpisodeId.From(film.Url.ParseId()),

@@ -2,18 +2,22 @@ using Microsoft.Extensions.Logging;
 using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
+using SWApiClient.Exceptions;
+using SWApiClient.Interfaces;
 using StarWars.AspNet.SWAPI.Mappings.Vehicles;
 
 namespace StarWars.AspNet.SWAPI.Stores;
 
+/// <inheritdoc />
 internal class VehiclesStore
     : IVehiclesStore
 {
     private readonly ILogger<VehiclesStore> _logger;
     private readonly ISWAPIClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="VehiclesStore"/>.
+    /// </summary>
     public VehiclesStore(ILogger<VehiclesStore> logger,
         ISWAPIClient client)
     {
@@ -21,6 +25,7 @@ internal class VehiclesStore
         this._client = client;
     }
 
+    /// <inheritdoc />
     public async Task<Vehicle?> FetchAsync(VehicleId id, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();

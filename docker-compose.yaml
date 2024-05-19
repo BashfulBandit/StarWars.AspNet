@@ -1,0 +1,16 @@
+name: starwars-aspnet
+
+services:
+  starwars.aspnet.api:
+    image: ghcr.io/bashfulbandit/starwars.aspnet.api:latest
+    ports:
+      - 8080:80
+      - 8081:443
+    networks:
+      starwars.aspnet.network:
+    healthcheck:
+      test: curl --fail http://localhost/api/healthz || exit 1
+
+networks:
+  starwars.aspnet.network:
+    name: ${STARWARS_ASPNET_NETWORK:-starwars.aspnet.network}

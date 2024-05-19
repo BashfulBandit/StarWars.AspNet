@@ -1,7 +1,7 @@
 using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Primitives;
-using StarWars.AspNet.SWAPI.Clients.Requests.Starships;
-using StarWars.AspNet.SWAPI.Clients.Responses.Starships;
+using SWApiClient.Requests.Starships;
+using SWApiClient.Responses.Starships;
 
 namespace StarWars.AspNet.SWAPI.Mappings.Starships;
 
@@ -14,5 +14,5 @@ internal static class RetrieveStarshipMappers
         };
 
     public static Starship ToModel(this RetrieveStarshipResponse response)
-        => (response as Clients.Models.Starship).ToModel();
+        => (response as SWApiClient.Models.Starship).ToModel();
 }

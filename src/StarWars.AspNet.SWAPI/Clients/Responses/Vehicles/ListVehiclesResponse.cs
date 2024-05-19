@@ -1,10 +1,10 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Responses.Vehicles;
+namespace SWApiClient.Responses.Vehicles;
 
 /// <summary>
 /// Get all the vehicle resources.
 /// </summary>
-internal class ListVehiclesResponse
+public class ListVehiclesResponse
     : PageResponse<Vehicle>
 { }

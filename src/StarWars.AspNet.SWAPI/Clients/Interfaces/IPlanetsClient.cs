@@ -1,14 +1,14 @@
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Models;
-using StarWars.AspNet.SWAPI.Clients.Requests.Planets;
-using StarWars.AspNet.SWAPI.Clients.Responses.Planets;
+using SWApiClient.Exceptions;
+using SWApiClient.Models;
+using SWApiClient.Requests.Planets;
+using SWApiClient.Responses.Planets;
 
-namespace StarWars.AspNet.SWAPI.Clients.Interfaces;
+namespace SWApiClient.Interfaces;
 
 /// <summary>
 /// Interface for interacting with the <see cref="Planet"/> resources.
 /// </summary>
-internal interface IPlanetsClient
+public interface IPlanetsClient
 {
     /// <summary>
     /// Retrieve a pagination list of <see cref="Planet"/> resources.

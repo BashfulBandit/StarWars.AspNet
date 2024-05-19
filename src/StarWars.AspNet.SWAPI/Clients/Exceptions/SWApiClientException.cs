@@ -1,10 +1,10 @@
-namespace StarWars.AspNet.SWAPI.Clients.Exceptions;
+namespace SWApiClient.Exceptions;
 
 /// <summary>
 /// Base exception to represent an unknown error either on the client side
 /// or the API side.
 /// </summary>
-internal class SWAPIClientException
+public class SWAPIClientException
     : Exception
 {
     /// <inheritdoc/>
@@ -22,7 +22,7 @@ internal class SWAPIClientException
 /// <summary>
 /// An exception to represent a HTTP 404 - Not Found response from the API.
 /// </summary>
-internal class SWAPIClientNotFoundException
+public class SWAPIClientNotFoundException
     : SWAPIClientException
 {
     /// <inheritdoc/>

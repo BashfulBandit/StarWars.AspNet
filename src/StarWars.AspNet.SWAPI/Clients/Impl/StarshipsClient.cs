@@ -1,12 +1,11 @@
 using RestSharp;
-using StarWars.AspNet.Core.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Extensions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
-using StarWars.AspNet.SWAPI.Clients.Options;
-using StarWars.AspNet.SWAPI.Clients.Requests.Starships;
-using StarWars.AspNet.SWAPI.Clients.Responses.Starships;
+using SWApiClient.Extensions;
+using SWApiClient.Interfaces;
+using SWApiClient.Options;
+using SWApiClient.Requests.Starships;
+using SWApiClient.Responses.Starships;
 
-namespace StarWars.AspNet.SWAPI.Clients.Impl;
+namespace SWApiClient.Impl;
 
 /// <inheritdoc />
 internal class StarshipsClient
@@ -15,6 +14,9 @@ internal class StarshipsClient
     private readonly StarshipsClientOptions _options;
     private readonly RestClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="StarshipsClient"/>.
+    /// </summary>
     public StarshipsClient(StarshipsClientOptions options,
         RestClient client)
     {
@@ -28,14 +30,10 @@ internal class StarshipsClient
         cancellation.ThrowIfCancellationRequested();
         request ??= new();
         var restRequest = new RestRequest(this._options.ListEndpoint, Method.Get)
-            .AddQueryParameter("page", request.Page);
-        if (request.Search.IsPresent())
-        {
-            restRequest = restRequest.AddQueryParameter("search", request.Search);
-        }
+            .AddQueryParameters(request);
         var restResponse = await this._client.ExecuteAsync<ListStarshipsResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 
     /// <inheritdoc />
@@ -46,6 +44,6 @@ internal class StarshipsClient
             .AddUrlSegment("starshipId", request.StarshipId);
         var restResponse = await this._client.ExecuteAsync<RetrieveStarshipResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
-        throw restResponse.BuildExceptionFromResponse();
+        throw restResponse.BuildException();
     }
 }

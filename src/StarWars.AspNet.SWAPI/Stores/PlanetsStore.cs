@@ -4,19 +4,23 @@ using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
+using SWApiClient.Exceptions;
+using SWApiClient.Interfaces;
 using StarWars.AspNet.SWAPI.Extensions;
 using StarWars.AspNet.SWAPI.Mappings.Planets;
 
 namespace StarWars.AspNet.SWAPI.Stores;
 
+/// <inheritdoc />
 internal class PlanetsStore
     : IPlanetsStore
 {
     private readonly ILogger<PlanetsStore> _logger;
     private readonly ISWAPIClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PlanetsStore"/>.
+    /// </summary>
     public PlanetsStore(ILogger<PlanetsStore> logger,
         ISWAPIClient client)
     {
@@ -24,6 +28,7 @@ internal class PlanetsStore
         this._client = client;
     }
 
+    /// <inheritdoc />
     public async Task<Planet?> FetchAsync(PlanetId id, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();
@@ -45,6 +50,7 @@ internal class PlanetsStore
         }
     }
 
+    /// <inheritdoc />
     public async Task<IPage<Planet>> ListAsync(PlanetsSearchFilter filter, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();

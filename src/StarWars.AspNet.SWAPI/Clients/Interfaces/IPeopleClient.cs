@@ -1,14 +1,14 @@
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Models;
-using StarWars.AspNet.SWAPI.Clients.Requests.People;
-using StarWars.AspNet.SWAPI.Clients.Responses.People;
+using SWApiClient.Exceptions;
+using SWApiClient.Models;
+using SWApiClient.Requests.People;
+using SWApiClient.Responses.People;
 
-namespace StarWars.AspNet.SWAPI.Clients.Interfaces;
+namespace SWApiClient.Interfaces;
 
 /// <summary>
 /// Interface for interacting with the <see cref="Person"/> resources.
 /// </summary>
-internal interface IPeopleClient
+public interface IPeopleClient
 {
     /// <summary>
     /// Retrieve a pagination list of <see cref="Person"/> resources.

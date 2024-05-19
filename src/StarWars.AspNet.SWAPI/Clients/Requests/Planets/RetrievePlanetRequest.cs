@@ -1,11 +1,11 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Requests.Planets;
+namespace SWApiClient.Requests.Planets;
 
 /// <summary>
 /// Model encapsulating data to make a request to retrieve a <see cref="Planet"/>.
 /// </summary>
-internal class RetrievePlanetRequest
+public class RetrievePlanetRequest
 {
     /// <summary>
     /// The StarWars API identifier for the planet.

@@ -6,6 +6,12 @@ namespace StarWars.AspNet.Client.Http.Extensions;
 
 internal static class RestSharpExtensions
 {
+    /// <summary>
+    /// Simple method to build a <see cref="StarWarsClientException"/> from a
+    /// <see cref="RestResponse"/>.
+    /// </summary>
+    /// <param name="response">The <see cref="RestResponse"/>.</param>
+    /// <returns>The built <see cref="StarWarsClientException"/>.</returns>
     public static StarWarsClientException BuildException(this RestResponse response)
     {
         var message = response.Content ?? "Error communicating with the StarWars API.";

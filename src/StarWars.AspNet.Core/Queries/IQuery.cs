@@ -1,4 +1,4 @@
-﻿namespace StarWars.AspNet.Core.Queries;
+namespace StarWars.AspNet.Core.Queries;
 
 /// <summary>
 /// Interface to define a query to fetch data.

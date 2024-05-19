@@ -1,8 +1,8 @@
-namespace StarWars.AspNet.SWAPI.Clients.Responses.Species;
+namespace SWApiClient.Responses.Species;
 
 /// <summary>
 /// Get a specific species resource.
 /// </summary>
-internal class RetrieveSpeciesResponse
+public class RetrieveSpeciesResponse
     : Models.Species
 { }

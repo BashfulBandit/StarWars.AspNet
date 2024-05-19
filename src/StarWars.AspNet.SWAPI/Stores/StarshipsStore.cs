@@ -4,19 +4,23 @@ using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Interfaces;
+using SWApiClient.Exceptions;
+using SWApiClient.Interfaces;
 using StarWars.AspNet.SWAPI.Extensions;
 using StarWars.AspNet.SWAPI.Mappings.Starships;
 
 namespace StarWars.AspNet.SWAPI.Stores;
 
+/// <inheritdoc />
 internal class StarshipsStore
     : IStarshipsStore
 {
     private readonly ILogger<StarshipsStore> _logger;
     private readonly ISWAPIClient _client;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="StarshipsStore"/>.
+    /// </summary>
     public StarshipsStore(ILogger<StarshipsStore> logger,
         ISWAPIClient client)
     {
@@ -24,6 +28,7 @@ internal class StarshipsStore
         this._client = client;
     }
 
+    /// <inheritdoc />
     public async Task<Starship?> FetchAsync(StarshipId id, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();
@@ -45,6 +50,7 @@ internal class StarshipsStore
         }
     }
 
+    /// <inheritdoc />
     public async Task<IPage<Starship>> ListAsync(StarshipsSearchFilter filter, CancellationToken cancellation = default)
     {
         cancellation.ThrowIfCancellationRequested();

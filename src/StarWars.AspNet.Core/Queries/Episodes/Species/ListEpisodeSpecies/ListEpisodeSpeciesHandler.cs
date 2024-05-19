@@ -2,6 +2,10 @@ using StarWars.AspNet.Core.Stores;
 
 namespace StarWars.AspNet.Core.Queries.Episodes.Species;
 
+/// <summary>
+/// Handler to process a <see cref="ListEpisodeSpecies"/> command and return a
+/// <see cref="ListEpisodeSpeciesResult"/>.
+/// </summary>
 internal class ListEpisodeSpeciesHandler
     : IQueryHandler<ListEpisodeSpecies, ListEpisodeSpeciesResult>
 {

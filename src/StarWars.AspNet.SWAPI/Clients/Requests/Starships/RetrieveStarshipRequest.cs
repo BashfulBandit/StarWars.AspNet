@@ -1,9 +1,9 @@
-namespace StarWars.AspNet.SWAPI.Clients.Requests.Starships;
+namespace SWApiClient.Requests.Starships;
 
 /// <summary>
 /// Model encapsulating data to make a request to retrieve a <see cref="Models.Starship"/>.
 /// </summary>
-internal class RetrieveStarshipRequest
+public class RetrieveStarshipRequest
 {
     /// <summary>
     /// The StarWars API identifier for the starhip.

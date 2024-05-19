@@ -1,10 +1,10 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Responses.Planets;
+namespace SWApiClient.Responses.Planets;
 
 /// <summary>
 /// Get a specific planet resource.
 /// </summary>;
-internal class RetrievePlanetResponse
+public class RetrievePlanetResponse
     : Planet
 { }

@@ -1,14 +1,14 @@
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Models;
-using StarWars.AspNet.SWAPI.Clients.Requests.Films;
-using StarWars.AspNet.SWAPI.Clients.Responses.Films;
+using SWApiClient.Exceptions;
+using SWApiClient.Models;
+using SWApiClient.Requests.Films;
+using SWApiClient.Responses.Films;
 
-namespace StarWars.AspNet.SWAPI.Clients.Interfaces;
+namespace SWApiClient.Interfaces;
 
 /// <summary>
 /// Interface for interacting with the <see cref="Film"/> resources.
 /// </summary>
-internal interface IFilmsClient
+public interface IFilmsClient
 {
     /// <summary>
     /// Retrieve a pagination list of <see cref="Film"/> resources.

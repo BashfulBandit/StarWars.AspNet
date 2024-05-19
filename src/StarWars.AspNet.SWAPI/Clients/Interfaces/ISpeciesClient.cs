@@ -1,17 +1,17 @@
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Models;
-using StarWars.AspNet.SWAPI.Clients.Requests.Species;
-using StarWars.AspNet.SWAPI.Clients.Responses.Species;
+using SWApiClient.Exceptions;
+using SWApiClient.Models;
+using SWApiClient.Requests.Species;
+using SWApiClient.Responses.Species;
 
-namespace StarWars.AspNet.SWAPI.Clients.Interfaces;
+namespace SWApiClient.Interfaces;
 
 /// <summary>
 /// Interface for interacting with the <see cref="Species"/> resources.
 /// </summary>
-internal interface ISpeciesClient
+public interface ISpeciesClient
 {
     /// <summary>
-    /// Retrieve a pagination list of <see cref="Species"/> resources.
+    /// Retrieve a paginated list of <see cref="Species"/> resources.
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="cancellation">

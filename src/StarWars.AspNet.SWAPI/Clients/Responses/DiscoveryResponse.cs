@@ -1,10 +1,10 @@
-namespace StarWars.AspNet.SWAPI.Clients.Responses;
+namespace SWApiClient.Responses;
 
 /// <summary>
 /// The Root resource provides information on all available resources within the
 /// API.
 /// </summary>
-internal class DiscoveryResponse
+public class DiscoveryResponse
 {
     /// <summary>
     /// The URL root for People resources

@@ -1,10 +1,10 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Responses.Starships;
+namespace SWApiClient.Responses.Starships;
 
 /// <summary>
 /// Get a specific starship resource.
 /// </summary>
-internal class RetrieveStarshipResponse
+public class RetrieveStarshipResponse
     : Starship
 { }

@@ -1,14 +1,14 @@
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Models;
-using StarWars.AspNet.SWAPI.Clients.Requests.Vehicles;
-using StarWars.AspNet.SWAPI.Clients.Responses.Vehicles;
+using SWApiClient.Exceptions;
+using SWApiClient.Models;
+using SWApiClient.Requests.Vehicles;
+using SWApiClient.Responses.Vehicles;
 
-namespace StarWars.AspNet.SWAPI.Clients.Interfaces;
+namespace SWApiClient.Interfaces;
 
 /// <summary>
 /// Interface for interacting with the <see cref="Vehicle"/> resources.
 /// </summary>
-internal interface IVehiclesClient
+public interface IVehiclesClient
 {
     /// <summary>
     /// Retrieve a pagination list of <see cref="Vehicle"/> resources.

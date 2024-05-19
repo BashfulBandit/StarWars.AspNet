@@ -1,10 +1,10 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Requests.People;
+namespace SWApiClient.Requests.People;
 
 /// <summary>
 /// Model encapsulating data to make a request to retrieve a list of <see cref="Person"/>.
 /// </summary>
-internal class ListPeopleRequest
+public class ListPeopleRequest
     : PageRequest
 { }

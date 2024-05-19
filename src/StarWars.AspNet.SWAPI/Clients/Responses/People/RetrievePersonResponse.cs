@@ -1,10 +1,10 @@
-using StarWars.AspNet.SWAPI.Clients.Models;
+using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Clients.Responses.People;
+namespace SWApiClient.Responses.People;
 
 /// <summary>
 /// Get a specific people resource.
 /// </summary>
-internal class RetrievePersonResponse
+public class RetrievePersonResponse
     : Person
 { }

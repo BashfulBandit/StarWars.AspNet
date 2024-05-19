@@ -1,6 +1,6 @@
-using StarWars.AspNet.SWAPI.Clients.Impl;
+using SWApiClient.Impl;
 
-namespace StarWars.AspNet.SWAPI.Clients.Options;
+namespace SWApiClient.Options;
 
 /// <summary>
 /// Options for the <see cref="PlanetsClient"/>.

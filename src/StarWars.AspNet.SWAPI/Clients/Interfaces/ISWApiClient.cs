@@ -1,13 +1,13 @@
-using StarWars.AspNet.SWAPI.Clients.Exceptions;
-using StarWars.AspNet.SWAPI.Clients.Models;
-using StarWars.AspNet.SWAPI.Clients.Responses;
+using SWApiClient.Exceptions;
+using SWApiClient.Models;
+using SWApiClient.Responses;
 
-namespace StarWars.AspNet.SWAPI.Clients.Interfaces;
+namespace SWApiClient.Interfaces;
 
 /// <summary>
 /// Interface for interacting with the Star Wars API.
 /// </summary>
-internal interface ISWAPIClient
+public interface ISWAPIClient
 {
     /// <summary>
     /// Retrieve the home root discovery document that defines the resource

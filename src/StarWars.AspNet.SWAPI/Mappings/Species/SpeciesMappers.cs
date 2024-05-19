@@ -5,7 +5,7 @@ namespace StarWars.AspNet.SWAPI.Mappings.Species;
 
 internal static class SpeciesMappers
 {
-    public static Core.Models.Species ToModel(this Clients.Models.Species species)
+    public static Core.Models.Species ToModel(this SWApiClient.Models.Species species)
         => new()
         {
             Id = SpeciesId.From(species.Url.ParseId()),
@@ -13,7 +13,7 @@ internal static class SpeciesMappers
             Classification = species.Classification,
             Designation = species.Designation,
             AverageHeight = species.AverageHeight,
-            AverageLifespace = species.AverageLifespace,
+            AverageLifespan = species.AverageLifespan,
             EyeColors = species.EyeColors.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             HairColors = species.HairColors.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             SkinColors = species.SkinColors.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),

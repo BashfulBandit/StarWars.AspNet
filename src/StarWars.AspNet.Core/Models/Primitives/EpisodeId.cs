@@ -2,6 +2,9 @@ using StarWars.AspNet.Core.Extensions;
 
 namespace StarWars.AspNet.Core.Models.Primitives;
 
+/// <summary>
+/// Represents a type-safe identifier for a <see cref="Episode"/>.
+/// </summary>
 public readonly struct EpisodeId
     : IEquatable<EpisodeId>
 {
@@ -11,10 +14,23 @@ public readonly struct EpisodeId
         this.Validate();
     }
 
+    /// <summary>
+    /// The actual internal value of the <see cref="BillingInformationId"/>.
+    /// </summary>
     public string Value { get; }
 
+    /// <summary>
+    /// Create a <see cref="VehicleId"/> from the specified <see cref="string"/>.
+    /// </summary>
+    /// <param name="value">The specified value.</param>
+    /// <returns>The created <see cref="VehicleId"/>.</returns>
     public static EpisodeId From(string value)
         => new(value);
+
+    /// <summary>
+    /// Generate a new <see cref="VehicleId"/>.
+    /// </summary>
+    /// <returns>The generated <see cref="VehicleId"/>.</returns>
     public static EpisodeId NewId()
         => new("flm-" + Guid.NewGuid());
     public static readonly EpisodeId Default

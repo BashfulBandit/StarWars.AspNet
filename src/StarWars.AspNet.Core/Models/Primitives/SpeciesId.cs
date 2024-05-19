@@ -2,6 +2,9 @@ using StarWars.AspNet.Core.Extensions;
 
 namespace StarWars.AspNet.Core.Models.Primitives;
 
+/// <summary>
+/// Represents a type-safe identifier for a <see cref="Species"/>.
+/// </summary>
 public readonly struct SpeciesId
     : IEquatable<SpeciesId>
 {
@@ -11,10 +14,23 @@ public readonly struct SpeciesId
         this.Validate();
     }
 
+    /// <summary>
+    /// The actual internal value of the <see cref="BillingInformationId"/>.
+    /// </summary>
     public string Value { get; }
 
+    /// <summary>
+    /// Create a <see cref="SpeciesId"/> from the specified <see cref="string"/>.
+    /// </summary>
+    /// <param name="value">The specified value.</param>
+    /// <returns>The created <see cref="SpeciesId"/>.</returns>
     public static SpeciesId From(string value)
         => new(value);
+
+    /// <summary>
+    /// Generate a new <see cref="SpeciesId"/>.
+    /// </summary>
+    /// <returns>The generated <see cref="SpeciesId"/>.</returns>
     public static SpeciesId NewId()
         => new("spc-" + Guid.NewGuid());
     public static readonly SpeciesId Default
