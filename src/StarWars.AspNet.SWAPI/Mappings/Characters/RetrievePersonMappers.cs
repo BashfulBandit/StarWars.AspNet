@@ -4,7 +4,7 @@ using SWApiClient.Models;
 using SWApiClient.Requests.People;
 using SWApiClient.Responses.People;
 
-namespace StarWars.AspNet.SWAPI.Mappings.People;
+namespace StarWars.AspNet.SWAPI.Mappings.Characters;
 
 internal static class RetrievePersonMappers
 {

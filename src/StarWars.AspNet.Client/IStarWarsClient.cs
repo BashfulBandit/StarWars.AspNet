@@ -1,7 +1,9 @@
 using StarWars.AspNet.Client.Exceptions;
+using StarWars.AspNet.Client.Requests.Characters;
 using StarWars.AspNet.Client.Requests.Characters.Starships;
 using StarWars.AspNet.Client.Requests.Episodes.Species;
 using StarWars.AspNet.Client.Responses;
+using StarWars.AspNet.Client.Responses.Characters;
 using StarWars.AspNet.Client.Responses.Characters.Starships;
 using StarWars.AspNet.Client.Responses.Episodes.Species;
 
@@ -40,7 +42,7 @@ public interface IStarWarsClient
     /// <summary>
     /// A client for interfacng with the character resources.
     /// </summary>
-    ICharactersClient People { get; }
+    ICharactersClient Characters { get; }
 
     /// <summary>
     /// Interface for interacting with episode resources in the Star Wars API.
@@ -80,6 +82,17 @@ public interface IStarWarsClient
         /// A client for interfacing with an character's starships.
         /// </summary>
         IStarshipsClient Starships { get; }
+
+        /// <summary>
+        /// Retrieve a paginated list of Star Wars <see cref="Models.Character"/>.
+        /// </summary>
+        /// <param name="request">The <see cref="ListCharactersRequest"/></param>
+        /// <param name="cancellation">
+        /// The <see cref="CancellationToken"/> used to propagate notifications that the operation should be canceled.
+        /// </param>
+        /// <returns>The <see cref="ListCharactersResponse"/></returns>
+        /// <exception cref="StarWarsClientException"></exception>
+        Task<ListCharactersResponse> ListAsync(ListCharactersRequest? request = null, CancellationToken cancellation = default);
 
         /// <summary>
         /// Interface for interacting with an character's <see cref="Models.Starship"/>.

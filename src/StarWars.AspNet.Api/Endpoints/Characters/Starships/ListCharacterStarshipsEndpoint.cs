@@ -1,5 +1,5 @@
 using System.Net;
-using StarWars.AspNet.Api.Endpoints.People.Starships;
+using StarWars.AspNet.Api.Endpoints.Characters.Starships;
 using StarWars.AspNet.Api.Mappings.Characters.Starships;
 using StarWars.AspNet.Api.Models;
 using StarWars.AspNet.Api.Requests.Characters.Starships;
@@ -56,7 +56,7 @@ internal class ListCharacterStarshipsSummary
         {
             CharacterId = "1"
         };
-        this.Response((int) HttpStatusCode.OK, "Successfully retrieved the total known population of the Star Wars universe.", "application/json",
+        this.Response((int) HttpStatusCode.OK, "Successfully retrieved a paginated list of starships the Star Wars character has piloted.", "application/json",
             new ListCharacterStarshipsResponse()
             {
                 Starships = new List<StarshipDto>()

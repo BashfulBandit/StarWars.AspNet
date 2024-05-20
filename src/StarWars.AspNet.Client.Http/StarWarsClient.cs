@@ -28,11 +28,11 @@ public class StarWarsClient
             configureSerialization: s => s.UseSystemTextJson(serializerOptions));
 
         this.Episodes = new EpisodesClient(this._client);
-        this.People = new CharactersClient(this._client);
+        this.Characters = new CharactersClient(this._client);
     }
 
     /// <inheritdoc/>
-    public IStarWarsClient.ICharactersClient People { get; }
+    public IStarWarsClient.ICharactersClient Characters { get; }
 
     /// <inheritdoc/>
     public IStarWarsClient.IEpisodesClient Episodes { get; }

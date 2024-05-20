@@ -1,6 +1,6 @@
 using RestSharp;
 using StarWars.AspNet.Client.Http.Extensions;
-using StarWars.AspNet.Client.Http.Mappings.People.Starships;
+using StarWars.AspNet.Client.Http.Mappings.Characters.Starships;
 using StarWars.AspNet.Client.Requests.Characters.Starships;
 using StarWars.AspNet.Client.Responses.Characters.Starships;
 

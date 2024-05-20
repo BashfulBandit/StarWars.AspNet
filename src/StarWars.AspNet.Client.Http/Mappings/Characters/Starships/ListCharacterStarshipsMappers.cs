@@ -1,7 +1,7 @@
 using RestSharp;
 using StarWars.AspNet.Client.Requests.Characters.Starships;
 
-namespace StarWars.AspNet.Client.Http.Mappings.People.Starships;
+namespace StarWars.AspNet.Client.Http.Mappings.Characters.Starships;
 
 internal static class ListCharacterStarshipsMappers
 {

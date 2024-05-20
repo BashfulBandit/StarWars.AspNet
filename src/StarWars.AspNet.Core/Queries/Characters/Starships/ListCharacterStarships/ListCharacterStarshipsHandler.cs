@@ -9,13 +9,13 @@ namespace StarWars.AspNet.Core.Queries.Characters.Starships;
 internal class ListCharacterStarshipsHandler
     : IQueryHandler<ListCharacterStarships, ListCharacterStarshipsResult>
 {
-    private readonly ICharactersStore _peopleStore;
+    private readonly ICharactersStore _charactersStore;
     private readonly IStarshipsStore _starshipsStore;
 
-    public ListCharacterStarshipsHandler(ICharactersStore peopleStore,
+    public ListCharacterStarshipsHandler(ICharactersStore charactersStore,
         IStarshipsStore starshipsStore)
     {
-        this._peopleStore = peopleStore;
+        this._charactersStore = charactersStore;
         this._starshipsStore = starshipsStore;
     }
 
@@ -41,12 +41,11 @@ internal class ListCharacterStarshipsHandler
         {
             return ListCharacterStarshipsResult.Failure(ListCharacterStarshipsException.Fault($"Failed to list starships for person `{query.Filter.PersonId!.Value}`.", ex));
         }
-        throw new NotImplementedException();
     }
 
     private async Task ValidateAsync(ListCharacterStarships query, CancellationToken cancellation = default)
     {
-        _ = await this._peopleStore.FetchAsync(query.Filter.PersonId!.Value, cancellation)
+        _ = await this._charactersStore.FetchAsync(query.Filter.PersonId!.Value, cancellation)
             ?? throw ListCharacterStarshipsException.NotFound(query.Filter.PersonId.Value);
     }
 }
