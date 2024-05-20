@@ -1,4 +1,4 @@
-namespace StarWars.AspNet.Api.Endpoints.People;
+namespace StarWars.AspNet.Api.Endpoints.Characters;
 
 internal class CharactersGroup
     : FastEndpoints.Group

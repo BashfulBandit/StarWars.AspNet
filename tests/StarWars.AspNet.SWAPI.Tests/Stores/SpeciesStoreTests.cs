@@ -1,4 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using StarWars.AspNet.Core.Models;
+using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
 using StarWars.AspNet.SWAPI.Tests.Bootstrap.Fixtures;
@@ -38,5 +40,20 @@ public class SpeciesStoreTests
         var species = await store.FetchAsync(speciesId);
 
         Assert.Null(species);
+    }
+
+    [Fact]
+    public async Task ListAsync_WhenGivenDefaultFilter_ItShouldReturnAPageOfSpecies()
+    {
+        using var scope = this._fixture.ServiceProvider.CreateScope();
+        var store = scope.ServiceProvider.GetRequiredService<ISpeciesStore>();
+
+        var filter = new SpeciesSearchFilter();
+        var species = await store.ListAsync(filter);
+
+        Assert.NotNull(species);
+        Assert.Equal(filter.Page, species.PageNumber);
+        Assert.Equal(filter.PageSize, species.PageSize);
+        Assert.NotNull(species.Items);
     }
 }

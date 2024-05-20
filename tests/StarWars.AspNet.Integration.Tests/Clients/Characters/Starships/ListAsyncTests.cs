@@ -3,7 +3,7 @@ using StarWars.AspNet.Client.Exceptions;
 using StarWars.AspNet.Client;
 using StarWars.AspNet.Integration.Tests.Bootstrap.Fixtures;
 
-namespace StarWars.AspNet.Integration.Tests.Clients.People.Starships;
+namespace StarWars.AspNet.Integration.Tests.Clients.Characters.Starships;
 
 [Collection(nameof(StarWarsCollection))]
 public class ListAsyncTests
@@ -21,7 +21,7 @@ public class ListAsyncTests
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var client = scope.ServiceProvider.GetRequiredService<IStarWarsClient>();
 
-        await Assert.ThrowsAsync<StarWarsClientNotFoundException>(async () => await client.People.Starships.ListAsync(new()
+        await Assert.ThrowsAsync<StarWarsClientNotFoundException>(async () => await client.Characters.Starships.ListAsync(new()
         {
             CharacterId = "NotAValidCharacterId"
         }));
@@ -33,7 +33,7 @@ public class ListAsyncTests
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var client = scope.ServiceProvider.GetRequiredService<IStarWarsClient>();
 
-        var response = await client.People.Starships.ListAsync(new()
+        var response = await client.Characters.Starships.ListAsync(new()
         {
             CharacterId = "1"
         });

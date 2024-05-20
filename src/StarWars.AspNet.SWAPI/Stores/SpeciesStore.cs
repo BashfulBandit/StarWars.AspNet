@@ -4,10 +4,10 @@ using StarWars.AspNet.Core.Models;
 using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
-using SWApiClient.Exceptions;
-using SWApiClient.Interfaces;
 using StarWars.AspNet.SWAPI.Extensions;
 using StarWars.AspNet.SWAPI.Mappings.Species;
+using SWApiClient.Exceptions;
+using SWApiClient.Interfaces;
 
 namespace StarWars.AspNet.SWAPI.Stores;
 

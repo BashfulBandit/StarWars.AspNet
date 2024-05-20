@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
 using StarWars.AspNet.SWAPI.Tests.Bootstrap.Fixtures;
@@ -38,5 +39,20 @@ public class StarshipsStoreTests
         var starship = await store.FetchAsync(starshipId);
 
         Assert.Null(starship);
+    }
+
+    [Fact]
+    public async Task ListAsync_WhenGivenDefaultFilter_ItShouldReturnAPageOfStarships()
+    {
+        using var scope = this._fixture.ServiceProvider.CreateScope();
+        var store = scope.ServiceProvider.GetRequiredService<IStarshipsStore>();
+
+        var filter = new StarshipsSearchFilter();
+        var species = await store.ListAsync(filter);
+
+        Assert.NotNull(species);
+        Assert.Equal(filter.Page, species.PageNumber);
+        Assert.Equal(filter.PageSize, species.PageSize);
+        Assert.NotNull(species.Items);
     }
 }

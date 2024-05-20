@@ -22,6 +22,7 @@ internal static class ISpeciesClientExtensions
         CancellationToken cancellation = default)
     {
         var species = new List<Species>();
+
         var page = 0;
         ListSpeciesResponse? response;
         do

@@ -45,5 +45,8 @@ public enum ListCharacterStarshipsFailureReason
     /// </summary>
     Fault,
 
+    /// <summary>
+    /// The requested character could not be found.
+    /// </summary>
     CharacterNotFound
 }

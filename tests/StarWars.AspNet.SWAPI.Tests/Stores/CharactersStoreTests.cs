@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using StarWars.AspNet.Core.Models.Filters;
 using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
 using StarWars.AspNet.SWAPI.Tests.Bootstrap.Fixtures;
@@ -38,5 +39,39 @@ public class CharactersStoreTests
         var person = await store.FetchAsync(personId);
 
         Assert.Null(person);
+    }
+
+    [Fact]
+    public async Task ListAsync_WhenGivenADefaultFilter_ItShouldReturnAPageOfCharacters()
+    {
+        using var scope = this._fixture.ServiceProvider.CreateScope();
+        var store = scope.ServiceProvider.GetRequiredService<ICharactersStore>();
+
+        var filter = new CharactersSearchFilter();
+        var characters = await store.ListAsync(filter);
+
+        Assert.NotNull(characters);
+        Assert.Equal(filter.Page, characters.PageNumber);
+        Assert.Equal(filter.PageSize, characters.PageSize);
+        Assert.NotNull(characters.Items);
+    }
+
+    [Fact]
+    public async Task ListAsync_WhenGivenALukeSkywalker_ItShouldReturnAPageContainingLukeSkywalker()
+    {
+        using var scope = this._fixture.ServiceProvider.CreateScope();
+        var store = scope.ServiceProvider.GetRequiredService<ICharactersStore>();
+
+        var filter = new CharactersSearchFilter()
+        {
+            Name = "Luke Skywalker"
+        };
+        var characters = await store.ListAsync(filter);
+
+        Assert.NotNull(characters);
+        Assert.Equal(filter.Page, characters.PageNumber);
+        Assert.Equal(filter.PageSize, characters.PageSize);
+        Assert.Equal(1, characters.PageCount);
+        Assert.Contains(characters.Items, c => c.Name == filter.Name);
     }
 }

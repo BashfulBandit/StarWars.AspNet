@@ -52,35 +52,54 @@ Query Parameters:
 
 ```json
 {
-    "starships": [
-        {
-            "id": "12",
-            "name": "X-wing",
-            "model": "T-65 X-wing",
-            "starshipClass": "Starfighter",
-            "manufacturer": [
-                "Incom Corporation"
-            ],
-            "costInCredits": "149999",
-            "length": "12.5",
-            "crew": "1",
-            "passengers": "0",
-            "maxAtmospheringSpeed": "1050",
-            "mglt": "100",
-            "cargoCapacity": "110",
-            "consumables": "1 week",
-            "createdAt": "2014-12-12T11:19:05.34Z",
-            "updatedAt": "2014-12-20T21:23:49.886Z"
-        }
-    ],
-    "pagination": {
-        "pageNumber": 1,
-        "pageSize": 25,
-        "pageCount": 1,
-        "totalCount": 1,
-        "hasPrevious": false,
-        "hasNext": false
+  "starships": [
+    {
+      "id": "12",
+      "name": "X-wing",
+      "model": "T-65 X-wing",
+      "starshipClass": "Starfighter",
+      "manufacturer": [
+        "Incom Corporation"
+      ],
+      "costInCredits": "149999",
+      "length": "12.5",
+      "crew": "1",
+      "passengers": "0",
+      "maxAtmospheringSpeed": "1050",
+      "mglt": "100",
+      "cargoCapacity": "110",
+      "consumables": "1 week",
+      "createdAt": "2014-12-12T11:19:05.34Z",
+      "updatedAt": "2014-12-20T21:23:49.886Z"
+    },
+    {
+      "id": "22",
+      "name": "Imperial shuttle",
+      "model": "Lambda-class T-4a shuttle",
+      "starshipClass": "Armed government transport",
+      "manufacturer": [
+        "Sienar Fleet Systems"
+      ],
+      "costInCredits": "240000",
+      "length": "20",
+      "crew": "6",
+      "passengers": "20",
+      "maxAtmospheringSpeed": "850",
+      "mglt": "50",
+      "cargoCapacity": "80000",
+      "consumables": "2 months",
+      "createdAt": "2014-12-15T13:04:47.235Z",
+      "updatedAt": "2014-12-20T21:23:49.9Z"
     }
+  ],
+  "pagination": {
+    "pageNumber": 1,
+    "pageSize": 25,
+    "pageCount": 1,
+    "totalCount": 2,
+    "hasPrevious": false,
+    "hasNext": false
+  }
 }
 ```
 
@@ -98,47 +117,137 @@ Query Parameters:
 
 ```json
 {
-    "species": [
-        {
-            "id": "1",
-            "name": "Human",
-            "classification": "mammal",
-            "designation": "sentient",
-            "averageHeight": "180",
-            "averageLifespan": "120",
-            "eyeColors": [
-                "brown",
-                "blue",
-                "green",
-                "hazel",
-                "grey",
-                "amber"
-            ],
-            "hairColors": [
-                "blonde",
-                "brown",
-                "black",
-                "red"
-            ],
-            "skinColors": [
-                "caucasian",
-                "black",
-                "asian",
-                "hispanic"
-            ],
-            "language": "Galactic Basic",
-            "createdAt": "2014-12-10T13:52:11.567Z",
-            "updatedAt": "2014-12-20T21:36:42.136Z"
-        }
-    ],
-    "pagination": {
-        "pageNumber": 1,
-        "pageSize": 25,
-        "pageCount": 1,
-        "totalCount": 1,
-        "hasPrevious": false,
-        "hasNext": false
+  "species": [
+    {
+      "id": "1",
+      "name": "Human",
+      "classification": "mammal",
+      "designation": "sentient",
+      "averageHeight": "180",
+      "averageLifespan": "120",
+      "eyeColors": [
+        "brown",
+        "blue",
+        "green",
+        "hazel",
+        "grey",
+        "amber"
+      ],
+      "hairColors": [
+        "blonde",
+        "brown",
+        "black",
+        "red"
+      ],
+      "skinColors": [
+        "caucasian",
+        "black",
+        "asian",
+        "hispanic"
+      ],
+      "language": "Galactic Basic",
+      "createdAt": "2014-12-10T13:52:11.567Z",
+      "updatedAt": "2014-12-20T21:36:42.136Z"
+    },
+    {
+      "id": "2",
+      "name": "Droid",
+      "classification": "artificial",
+      "designation": "sentient",
+      "averageHeight": "n/a",
+      "averageLifespan": "indefinite",
+      "eyeColors": [
+        "n/a"
+      ],
+      "hairColors": [
+        "n/a"
+      ],
+      "skinColors": [
+        "n/a"
+      ],
+      "language": "n/a",
+      "createdAt": "2014-12-10T15:16:16.259Z",
+      "updatedAt": "2014-12-20T21:36:42.139Z"
+    },
+    {
+      "id": "3",
+      "name": "Wookie",
+      "classification": "mammal",
+      "designation": "sentient",
+      "averageHeight": "210",
+      "averageLifespan": "400",
+      "eyeColors": [
+        "blue",
+        "green",
+        "yellow",
+        "brown",
+        "golden",
+        "red"
+      ],
+      "hairColors": [
+        "black",
+        "brown"
+      ],
+      "skinColors": [
+        "gray"
+      ],
+      "language": "Shyriiwook",
+      "createdAt": "2014-12-10T16:44:31.486Z",
+      "updatedAt": "2014-12-20T21:36:42.142Z"
+    },
+    {
+      "id": "4",
+      "name": "Rodian",
+      "classification": "sentient",
+      "designation": "reptilian",
+      "averageHeight": "170",
+      "averageLifespan": "unknown",
+      "eyeColors": [
+        "black"
+      ],
+      "hairColors": [
+        "n/a"
+      ],
+      "skinColors": [
+        "green",
+        "blue"
+      ],
+      "language": "Galatic Basic",
+      "createdAt": "2014-12-10T17:05:26.471Z",
+      "updatedAt": "2014-12-20T21:36:42.144Z"
+    },
+    {
+      "id": "5",
+      "name": "Hutt",
+      "classification": "gastropod",
+      "designation": "sentient",
+      "averageHeight": "300",
+      "averageLifespan": "1000",
+      "eyeColors": [
+        "yellow",
+        "red"
+      ],
+      "hairColors": [
+        "n/a"
+      ],
+      "skinColors": [
+        "green",
+        "brown",
+        "tan"
+      ],
+      "language": "Huttese",
+      "createdAt": "2014-12-10T17:12:50.41Z",
+      "updatedAt": "2014-12-20T21:36:42.146Z"
     }
+  ],
+  "pagination": {
+    "pageNumber": 1,
+    "pageSize": 25,
+    "pageCount": 1,
+    "totalCount": 5,
+    "hasPrevious": false,
+    "hasNext": false
+  }
 }
 ```
 

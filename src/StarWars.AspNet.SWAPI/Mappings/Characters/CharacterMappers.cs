@@ -3,7 +3,7 @@ using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.SWAPI.Extensions;
 using SWApiClient.Models;
 
-namespace StarWars.AspNet.SWAPI.Mappings.People;
+namespace StarWars.AspNet.SWAPI.Mappings.Characters;
 
 internal static class CharacterMappers
 {
