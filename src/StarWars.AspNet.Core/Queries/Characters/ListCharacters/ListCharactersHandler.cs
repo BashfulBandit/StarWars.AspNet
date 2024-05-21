@@ -3,6 +3,10 @@ using StarWars.AspNet.Core.Stores;
 
 namespace StarWars.AspNet.Core.Queries.Characters;
 
+/// <summary>
+/// Handler to process a <see cref="ListCharacters"/> query and return a
+/// <see cref="ListCharactersResult"/>.
+/// </summary>
 internal class ListCharactersHandler
     : IQueryHandler<ListCharacters, ListCharactersResult>
 {
@@ -21,6 +25,10 @@ internal class ListCharactersHandler
         {
             var page = await this._charactersStore.ListAsync(query.Filter, cancellation);
             return ListCharactersResult.Success(page);
+        }
+        catch (OperationCanceledException)
+        {
+            throw;
         }
         catch (Exception ex)
         {

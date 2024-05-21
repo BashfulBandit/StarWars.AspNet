@@ -93,5 +93,6 @@ internal class ListCharacterStarshipsSummary
                     TotalCount = 1
                 }
             });
+        this.Response((int) HttpStatusCode.NotFound, "Unable to locate the character by identifier.");
     }
 }

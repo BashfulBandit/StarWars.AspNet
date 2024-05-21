@@ -99,5 +99,6 @@ internal class ListEpisodeSpeciesSummary
                     TotalCount = 1
                 }
             });
+        this.Response((int) HttpStatusCode.NotFound, "Unable to locate the episode by identifier.");
     }
 }

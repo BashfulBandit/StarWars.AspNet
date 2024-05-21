@@ -95,6 +95,18 @@ public interface IStarWarsClient
         Task<ListCharactersResponse> ListAsync(ListCharactersRequest? request = null, CancellationToken cancellation = default);
 
         /// <summary>
+        /// Retrieve a <see cref="Models.Character"/> by identifier.
+        /// </summary>
+        /// <param name="request">The <see cref="RetrieveCharacterRequest"/>.</param>
+        /// <param name="cancellation">
+        /// The <see cref="CancellationToken"/> used to propagate notifications that the operation should be canceled.
+        /// </param>
+        /// <returns>The <see cref="RetrieveCharacterResponse"/></returns>
+        /// <exception cref="StarWarsClientException"></exception>
+        /// <exception cref="StarWarsClientNotFoundException"></exception>
+        Task<RetrieveCharacterResponse> RetrieveAsync(RetrieveCharacterRequest request, CancellationToken cancellation = default);
+
+        /// <summary>
         /// Interface for interacting with an character's <see cref="Models.Starship"/>.
         /// </summary>
         public interface IStarshipsClient

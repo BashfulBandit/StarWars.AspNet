@@ -3,7 +3,7 @@ using StarWars.AspNet.Core.Stores;
 namespace StarWars.AspNet.Core.Queries.Characters.Starships;
 
 /// <summary>
-/// Handler to process a <see cref="ListCharacterStarships"/> command and return a
+/// Handler to process a <see cref="ListCharacterStarships"/> query and return a
 /// <see cref="ListCharacterStarshipsResult"/>.
 /// </summary>
 internal class ListCharacterStarshipsHandler
