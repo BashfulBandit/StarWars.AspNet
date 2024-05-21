@@ -1,9 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
-using StarWars.AspNet.Client;
 using StarWars.AspNet.Client.Exceptions;
+using StarWars.AspNet.Client;
 using StarWars.AspNet.Integration.Tests.Bootstrap.Fixtures;
 
-namespace StarWars.AspNet.Integration.Tests.Clients.Characters;
+namespace StarWars.AspNet.Integration.Tests.Clients.Episodes;
 
 [Collection(nameof(StarWarsCollection))]
 public class RetrieveAsyncTests
@@ -16,31 +16,31 @@ public class RetrieveAsyncTests
     }
 
     [Fact]
-    public async Task RetrieveAsync_WhenGivenAValidCharacterId_ItShouldReturnTheCharacter()
+    public async Task RetrieveAsync_WhenGivenAValidEpisodeId_ItShouldReturnTheEpisode()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var client = scope.ServiceProvider.GetRequiredService<IStarWarsClient>();
 
-        var response = await client.Characters.RetrieveAsync(new()
+        var response = await client.Episodes.RetrieveAsync(new()
         {
-            CharacterId = "1"
+            EpisodeId = "1"
         });
 
         Assert.NotNull(response);
-        Assert.NotNull(response.Character);
-        Assert.NotNull(response.Character.Id);
-        Assert.Equal("1", response.Character.Id);
+        Assert.NotNull(response.Episode);
+        Assert.NotNull(response.Episode.Id);
+        Assert.Equal("1", response.Episode.Id);
     }
 
     [Fact]
-    public async Task RetrieveAsync_WhenGivenAInvalidCharacterId_ItShouldthrowAnException()
+    public async Task RetrieveAsync_WhenGivenAInvalidEpisodeId_ItShouldthrowAnException()
     {
         using var scope = this._fixture.ServiceProvider.CreateScope();
         var client = scope.ServiceProvider.GetRequiredService<IStarWarsClient>();
 
-        await Assert.ThrowsAsync<StarWarsClientNotFoundException>(async () => await client.Characters.RetrieveAsync(new()
+        await Assert.ThrowsAsync<StarWarsClientNotFoundException>(async () => await client.Episodes.RetrieveAsync(new()
         {
-            CharacterId = "SomeInvalidCharacterId"
+            EpisodeId = "SomeInvalidEpisodeId"
         }));
     }
 }

@@ -22,6 +22,7 @@ internal static class IPlanetClientExtensions
         CancellationToken cancellation = default)
     {
         var planets = new List<Planet>();
+
         var page = 0;
         ListPlanetsResponse? response;
         do
