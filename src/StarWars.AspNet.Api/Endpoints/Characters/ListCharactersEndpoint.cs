@@ -1,5 +1,4 @@
 using System.Net;
-using StarWars.AspNet.Api.Endpoints.Characters;
 using StarWars.AspNet.Api.Mappings.Characters;
 using StarWars.AspNet.Api.Models;
 using StarWars.AspNet.Api.Requests.Characters;

@@ -11,6 +11,7 @@ internal class CharactersClient
     : IStarWarsClient.ICharactersClient
 {
     public const string CharactersEndpoint = "/api/characters";
+    public const string CharacterEndpoint = "/api/characters/{characterId}";
 
     private readonly RestClient _client;
 
@@ -30,6 +31,15 @@ internal class CharactersClient
         request ??= new();
         var restRequest = request.ToRestRequest();
         var restResponse = await this._client.ExecuteAsync<ListCharactersResponse>(restRequest, cancellation);
+        if (restResponse.IsSuccessful) return restResponse.Data!;
+        throw restResponse.BuildException();
+    }
+
+    public async Task<RetrieveCharacterResponse> RetrieveAsync(RetrieveCharacterRequest request, CancellationToken cancellation = default)
+    {
+        cancellation.ThrowIfCancellationRequested();
+        var restRequest = request.ToRestRequest();
+        var restResponse = await this._client.ExecuteAsync<RetrieveCharacterResponse>(restRequest, cancellation);
         if (restResponse.IsSuccessful) return restResponse.Data!;
         throw restResponse.BuildException();
     }

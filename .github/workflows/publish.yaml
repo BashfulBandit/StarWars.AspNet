@@ -27,7 +27,7 @@ jobs:
           context: .
           push: true
           file: ./src/StarWars.AspNet.Api/Dockerfile
-          tags: ghcr.io/bashfulbandit/starwars.aspnet.api:latest,ghcr.io/bashfulbandit/starwars.aspnet.api:1.1.0
+          tags: ghcr.io/bashfulbandit/starwars.aspnet.api:latest,ghcr.io/bashfulbandit/starwars.aspnet.api:1.2.0
 
   publish-starwars-api-testcontainers:
     runs-on: ubuntu-latest

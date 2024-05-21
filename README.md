@@ -13,7 +13,7 @@ Star Wars REST API in ASP.NET 6.0.
 To simply deploy/run the Star Wars REST API via Docker, you can run the command:
 
 ```bash
-$ docker run -p 8080:80 ghcr.io/bashfulbandit/starwars.aspnet.api:latest
+docker run -p 8080:80 ghcr.io/bashfulbandit/starwars.aspnet.api:latest
 ```
 
 ## Running via `docker compose`
