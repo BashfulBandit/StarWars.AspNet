@@ -6,7 +6,6 @@ using StarWars.AspNet.Core.Models.Primitives;
 using StarWars.AspNet.Core.Stores;
 using StarWars.AspNet.SWAPI.Extensions;
 using StarWars.AspNet.SWAPI.Mappings.Characters;
-using StarWars.AspNet.SWAPI.Mappings.Characters;
 using SWApiClient.Exceptions;
 using SWApiClient.Interfaces;
 

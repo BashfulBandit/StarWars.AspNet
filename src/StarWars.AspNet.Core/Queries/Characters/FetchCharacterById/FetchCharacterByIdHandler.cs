@@ -1,4 +1,3 @@
-
 using StarWars.AspNet.Core.Stores;
 
 namespace StarWars.AspNet.Core.Queries.Characters;

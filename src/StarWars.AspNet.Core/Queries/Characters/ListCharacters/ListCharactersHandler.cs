@@ -32,7 +32,7 @@ internal class ListCharactersHandler
         }
         catch (Exception ex)
         {
-            return ListCharactersResult.Failure(ListCharactersException.Fault($"Failed to list characters.", ex));
+            return ListCharactersResult.Failure(ListCharactersException.Fault("Failed to list characters.", ex));
         }
     }
 }

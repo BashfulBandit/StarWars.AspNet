@@ -1,10 +1,12 @@
 using StarWars.AspNet.Client.Exceptions;
 using StarWars.AspNet.Client.Requests.Characters;
 using StarWars.AspNet.Client.Requests.Characters.Starships;
+using StarWars.AspNet.Client.Requests.Episodes;
 using StarWars.AspNet.Client.Requests.Episodes.Species;
 using StarWars.AspNet.Client.Responses;
 using StarWars.AspNet.Client.Responses.Characters;
 using StarWars.AspNet.Client.Responses.Characters.Starships;
+using StarWars.AspNet.Client.Responses.Episodes;
 using StarWars.AspNet.Client.Responses.Episodes.Species;
 
 namespace StarWars.AspNet.Client;
@@ -53,6 +55,29 @@ public interface IStarWarsClient
         /// A client for interfacing with an episode's species.
         /// </summary>
         ISpeciesClient Species { get; }
+
+        /// <summary>
+        /// Retrieve a paginated list of Star Wars <see cref="Models.Episode"/>.
+        /// </summary>
+        /// <param name="request">The <see cref="ListEpisodesRequest"/></param>
+        /// <param name="cancellation">
+        /// The <see cref="CancellationToken"/> used to propagate notifications that the operation should be canceled.
+        /// </param>
+        /// <returns>The <see cref="ListEpisodesResponse"/></returns>
+        /// <exception cref="StarWarsClientException"></exception>
+        Task<ListEpisodesResponse> ListAsync(ListEpisodesRequest? request = null, CancellationToken cancellation = default);
+
+        /// <summary>
+        /// Retrieve a <see cref="Models.Episode"/> by identifier.
+        /// </summary>
+        /// <param name="request">The <see cref="RetrieveEpisodeRequest"/>.</param>
+        /// <param name="cancellation">
+        /// The <see cref="CancellationToken"/> used to propagate notifications that the operation should be canceled.
+        /// </param>
+        /// <returns>The <see cref="RetrieveEpisodeResponse"/></returns>
+        /// <exception cref="StarWarsClientException"></exception>
+        /// <exception cref="StarWarsClientNotFoundException"></exception>
+        Task<RetrieveEpisodeResponse> RetrieveAsync(RetrieveEpisodeRequest request, CancellationToken cancellation = default);
 
         /// <summary>
         /// Interface for interacting with an episode's <see cref="Models.Species"/>.

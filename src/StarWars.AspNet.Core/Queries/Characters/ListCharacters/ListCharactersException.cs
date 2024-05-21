@@ -7,11 +7,6 @@ public class ListCharactersException
     : Exception
 {
     /// <inheritdoc/>
-    private ListCharactersException(string message)
-        : base(message)
-    { }
-
-    /// <inheritdoc/>
     private ListCharactersException(string message,
         Exception innerException)
         : base(message, innerException)

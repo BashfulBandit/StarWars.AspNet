@@ -22,6 +22,7 @@ internal static class IStarshipsClientExtensions
         CancellationToken cancellation = default)
     {
         var starships = new List<Starship>();
+
         var page = 0;
         ListStarshipsResponse? response;
         do
