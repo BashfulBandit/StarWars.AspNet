@@ -40,14 +40,25 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/episodes/",
+							"raw": "{{base_url}}/api/episodes",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"episodes",
-								""
+								"episodes"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "25",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -59,15 +70,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/episodes/{{episode_id}}/",
+							"raw": "{{base_url}}/api/episodes/{{episode_id}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
 								"episodes",
-								"{{episode_id}}",
-								""
+								"{{episode_id}}"
 							]
 						}
 					},
@@ -87,7 +97,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/api/characters/{{character_id}}/starships/",
+									"raw": "{{base_url}}/api/characters/{{character_id}}/starships",
 									"host": [
 										"{{base_url}}"
 									],
@@ -95,8 +105,7 @@
 										"api",
 										"characters",
 										"{{character_id}}",
-										"starships",
-										""
+										"starships"
 									]
 								}
 							},
