@@ -11,7 +11,7 @@ namespace StarWars.AspNet.Api.Testcontainers;
 public class StarWarsApiBuilder
     : ContainerBuilder<StarWarsApiBuilder, StarWarsApiContainer, StarWarsApiConfiguration>
 {
-    public const string Image = "localhost/starwars.aspnet.api:1.3.0";
+    public const string Image = "localhost/starwars.aspnet.api:1.3.1";
 
     public const ushort HttpPort = 8080;
     public const ushort HttpsPort = 8081;
